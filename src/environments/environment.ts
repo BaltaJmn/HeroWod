@@ -11,8 +11,11 @@ export const environment = {
     databaseURL: "https://herowod-c44bb.firebaseio.com",
     projectId: "herowod-c44bb",
     storageBucket: "",
-    messagingSenderId: "732499509842"
-  }
+    messagingSenderId: "732499509842",
+    usuarios: "usuarios"
+  },
+
+  defaultAvatar: "assets/defaultProfile.jpg"
 };
 
 /*
