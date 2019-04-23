@@ -12,7 +12,8 @@ export const environment = {
     projectId: "herowod-c44bb",
     storageBucket: "",
     messagingSenderId: "732499509842",
-    usuarios: "usuarios"
+    usuarios: "usuarios",
+    grupos: "grupos"
   },
 
   defaultAvatar: "assets/defaultProfile.jpg"

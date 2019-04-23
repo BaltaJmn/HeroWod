@@ -16,23 +16,72 @@ export class UsuarioService {
   ) { 
 
     this.usuariosColeccion = fireStore.collection<any>(environment.firebaseConfig.usuarios);
-
+    
     this.usuario.logged = false;
     this.usuario.id = "";
     this.usuario.usuario = "";
     this.usuario.contraseña = "";
-    this.usuario.rol = "";
+    this.usuario.admin = false;
     this.usuario.dias = "";
     this.usuario.avatar = environment.defaultAvatar;
     this.usuario.grupo = "";
 
   }
 
-  /**
-   * Crea un usuario en la base de datos
-   * @param datos Datos del usuario
-   */
   crearUsuario(datos) {
     return this.usuariosColeccion.add(datos);
+  }
+
+  recuperarUsuarioID(usuario, contraseña) {
+    return this.usuariosColeccion.ref.where("usuario", "==", usuario).where("contraseña", "==", contraseña).get();
+  }
+
+  iniciarSesion(datosUsuario, id) {
+
+    console.log(datosUsuario)
+
+    this.usuario = datosUsuario;
+
+    this.usuario.logged = true;
+
+    this.usuario.id = id;
+
+    this.usuario.dias = datosUsuario.dias;
+
+    //this.storage.set('datosSesion', this.datosSesion);
+  }
+
+
+  isLogged(): Boolean {
+    return this.usuario.logged;
+  }
+
+  isAdmin(): Boolean {
+    return this.usuario.admin;
+  }
+
+
+  getId() {
+    return this.usuario.id;
+  }
+
+  getUsuario() {
+    return this.usuario.usuario;
+  }
+
+  getContraseña() {
+    return this.usuario.contraseña;
+  }
+
+  getDias() {
+    return this.usuario.dias;
+  }
+
+  getAvatar() {
+    return this.usuario.avatar;
+  }
+
+  getGrupo() {
+    return this.usuario.grupo;
   }
 }

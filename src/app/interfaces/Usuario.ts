@@ -3,7 +3,7 @@ export interface Usuario {
     id?: string,
     usuario?: string,
     contraseña?: string,
-    rol?: string,
+    admin?: boolean,
     dias?: string,
     avatar?: string,
     grupo?: string,

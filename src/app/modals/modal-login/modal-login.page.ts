@@ -1,3 +1,5 @@
+import { GrupoService } from './../../services/grupo.service';
+import { FuncionesService } from './../../services/funciones.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonSlides, LoadingController, ModalController } from '@ionic/angular';
 
@@ -34,10 +36,12 @@ export class ModalLoginPage implements OnInit {
   public datosUsuario = [];
 
   constructor(
+    public userService: UsuarioService,
+    public groupService: GrupoService,
+    public funcionesService: FuncionesService,
     public formBuilder: FormBuilder,
     public loadingController: LoadingController,
     public modalController: ModalController,
-    public userService: UsuarioService
   ) {
     this.createUserFormGroup = this.formBuilder.group({
       usuario: ['', Validators.required],
@@ -64,6 +68,60 @@ export class ModalLoginPage implements OnInit {
 
     this.userService.crearUsuario(data);
     
+  }
+
+  login(){
+
+    /* Reune los datos del formulario */
+    let data = {
+      usuario: this.loginUserFormGroup.get("usuario").value,
+      contraseña: this.loginUserFormGroup.get("contraseña").value,
+    };
+
+    /* Comprueba que el usuario existe */
+    this.userService.recuperarUsuarioID(data.usuario, data.contraseña)
+      .then((d) => {
+
+        if (d.empty == true) {
+
+          //this.loadingController.dismiss();
+
+          //this.funcionesService.mostrarToast("No se han encontrado usuarios");
+
+        } else {
+
+          let id = d.docs[0].id;
+
+          /* Vuelca los datos del usuario en un array e inicia sesión */
+          this.datosUsuario = d.docs[0].data();
+
+          console.log(this.datosUsuario);
+
+          this.userService.iniciarSesion(this.datosUsuario, id);
+
+          //this.loadingController.dismiss();
+
+          /* Comprueba que se encuentra logeado */
+          if (this.userService.isLogged()) {
+
+            this.groupService.inicializarGrupo()
+
+            //this.funcionesService.mostrarToast("Sesión iniciada correctamente");
+
+            //this.vibration.vibrate(50);
+
+            //this.funcionesService.mostrarToast("Estás logeado");
+
+            //this.modalController.dismiss()
+
+          } else {
+
+            //this.funcionesService.mostrarToast("Problemas al iniciar sesión");
+
+          }
+
+        }
+      });
   }
 
   ngOnInit() {

@@ -17,6 +17,7 @@ import { environment } from './../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { Toast } from '@ionic-native/toast/ngx';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Toast
   ],
   bootstrap: [AppComponent]
 })
