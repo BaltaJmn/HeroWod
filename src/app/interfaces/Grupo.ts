@@ -1,7 +1,7 @@
 export interface Grupo {
     id?: string,
     numeroGrupo?: String, 
-    entrenamientos?: Array<any>,
+    entrenamientos?: any,
     actual?: string, 
     max?: string
 }

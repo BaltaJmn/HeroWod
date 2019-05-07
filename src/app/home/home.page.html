@@ -4,13 +4,19 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Home
+      {{groupNumer}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <ion-button (click)="prueba()">
+<ion-content *ngIf="!logged">
+  <p>Inicia Sesión para acceder a los entrenamientos</p>
+</ion-content>
 
-    </ion-button>
+<ion-content *ngIf="logged">
+  <ion-item-sliding *ngFor="let workout of groupWorkout">
+    <ion-item>
+      <ion-label>{{workout}}</ion-label>
+    </ion-item>
+  </ion-item-sliding>
 </ion-content>

@@ -43,12 +43,12 @@
         <ion-item>
           <ion-label>
 
-            <ion-button color="primary" (click)="mostrarModalLogin()">
+            <ion-button color="primary" *ngIf="!logged" (click)="mostrarModalLogin()">
               <ion-icon slot="start" name="log-in"></ion-icon>
               <span>Iniciar Sesión</span>
             </ion-button>
 
-            <ion-button color="primary">
+            <ion-button color="primary" *ngIf="logged">
               <ion-icon slot="end" name="log-out"></ion-icon>
               <span>Cerrar Sesión</span>
             </ion-button>

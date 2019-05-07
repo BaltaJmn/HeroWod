@@ -36,9 +36,7 @@ export class UsuarioService {
     return this.usuariosColeccion.ref.where("usuario", "==", usuario).where("contraseña", "==", contraseña).get();
   }
 
-  iniciarSesion(datosUsuario, id) {
-
-    console.log(datosUsuario)
+  iniciarSesion(id, datosUsuario) {
 
     this.usuario = datosUsuario;
 

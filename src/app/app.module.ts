@@ -1,3 +1,4 @@
+import { HomePage } from './home/home.page';
 import { ModalLoginPage } from './modals/modal-login/modal-login.page';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -36,7 +37,8 @@ import { Toast } from '@ionic-native/toast/ngx';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Toast
+    Toast,
+    HomePage
   ],
   bootstrap: [AppComponent]
 })

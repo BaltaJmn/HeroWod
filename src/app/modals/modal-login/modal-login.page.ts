@@ -1,7 +1,7 @@
 import { GrupoService } from './../../services/grupo.service';
 import { FuncionesService } from './../../services/funciones.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSlides, LoadingController, ModalController } from '@ionic/angular';
+import { IonSlides, LoadingController, ModalController, Events } from '@ionic/angular';
 
 /**
  * Formularios
@@ -42,6 +42,7 @@ export class ModalLoginPage implements OnInit {
     public formBuilder: FormBuilder,
     public loadingController: LoadingController,
     public modalController: ModalController,
+    public events: Events
   ) {
     this.createUserFormGroup = this.formBuilder.group({
       usuario: ['', Validators.required],
@@ -91,27 +92,16 @@ export class ModalLoginPage implements OnInit {
         } else {
 
           let id = d.docs[0].id;
-
-          /* Vuelca los datos del usuario en un array e inicia sesión */
           this.datosUsuario = d.docs[0].data();
-
-          console.log(this.datosUsuario);
-
-          this.userService.iniciarSesion(this.datosUsuario, id);
+          this.userService.iniciarSesion(id, this.datosUsuario);
 
           //this.loadingController.dismiss();
 
-          /* Comprueba que se encuentra logeado */
           if (this.userService.isLogged()) {
-
             this.groupService.inicializarGrupo()
-
             //this.funcionesService.mostrarToast("Sesión iniciada correctamente");
-
             //this.vibration.vibrate(50);
-
             //this.funcionesService.mostrarToast("Estás logeado");
-
             //this.modalController.dismiss()
 
           } else {
