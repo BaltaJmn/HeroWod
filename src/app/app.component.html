@@ -15,18 +15,23 @@
               solid #fff"></ion-img>
           </ion-avatar>
 
-          <ion-item>
-            <ion-label>diasEscaneados</ion-label>
+          <ion-item *ngIf="logged">
+            <ion-label>Nombre: {{username}}</ion-label>
           </ion-item>
 
-          <ion-item>
-            <ion-label>descuentoEscaneados €</ion-label>
+          <ion-item *ngIf="logged">
+            <ion-label>Días Escaneados: {{dias}}</ion-label>
+          </ion-item>
+
+          <ion-item *ngIf="logged">
+            <ion-label>Descuento: {{descuento}} €</ion-label>
           </ion-item>
 
         </ion-toolbar>
       </ion-header>
 
       <ion-content>
+
         <ion-item>
           <ion-icon slot="start" name="camera"></ion-icon>
           <ion-label>Escaneo Diario</ion-label>

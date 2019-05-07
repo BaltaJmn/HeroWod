@@ -26,7 +26,11 @@ export class AppComponent {
     }
   ];
 
-  userName: String = "";
+  username: String = "";
+  dias: any = 0;
+  descuento: any;
+  avatar: String = "";
+  grupo: String = "";
 
   logged: boolean = false;
 
@@ -43,7 +47,13 @@ export class AppComponent {
     this.initializeApp();
 
     events.subscribe('logged', () => {
-      this.logged = true;      
+      this.logged = true;
+      this.username = this.userService.getUsuario();  
+      this.dias = this.userService.getDias();
+      this.avatar = this.userService.getAvatar();
+      this.grupo = this.userService.getGrupo();  
+
+      this.descuento = parseInt(this.dias) * 10 / 100;
     });
   }
 
@@ -52,6 +62,11 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  ionViewDidEnter() {
+    this.avatar = this.userService.getAvatar();
+    this.descuento
   }
 
   async mostrarModalLogin() {
