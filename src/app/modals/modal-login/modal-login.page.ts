@@ -1,5 +1,8 @@
+import { UsuarioService } from 'src/app/services/usuario.service';
 import { GrupoService } from './../../services/grupo.service';
+import { EntrenamientosService } from './../../services/entrenamientos.service';
 import { FuncionesService } from './../../services/funciones.service';
+
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonSlides, LoadingController, ModalController, Events } from '@ionic/angular';
 
@@ -8,7 +11,7 @@ import { IonSlides, LoadingController, ModalController, Events } from '@ionic/an
  */
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
-import { UsuarioService } from 'src/app/services/usuario.service';
+
 
 
 @Component({
@@ -38,9 +41,10 @@ export class ModalLoginPage implements OnInit {
   constructor(
     public userService: UsuarioService,
     public groupService: GrupoService,
-    public funcionesService: FuncionesService,
+    public workoutService: EntrenamientosService,
+    public funciones: FuncionesService,
+
     public formBuilder: FormBuilder,
-    public loadingController: LoadingController,
     public modalController: ModalController,
     public events: Events
   ) {
@@ -57,11 +61,10 @@ export class ModalLoginPage implements OnInit {
 
   register(){
 
-    /* Reune los datos del formulario */
     let data = {
       usuario: this.createUserFormGroup.get("usuario").value,
       contraseña: this.createUserFormGroup.get("contraseña").value,
-      rol: "user",
+      admin: false,
       dias: 0,
       avatar: environment.defaultAvatar,
       grupo: "1"
@@ -73,21 +76,21 @@ export class ModalLoginPage implements OnInit {
 
   login(){
 
-    /* Reune los datos del formulario */
     let data = {
       usuario: this.loginUserFormGroup.get("usuario").value,
       contraseña: this.loginUserFormGroup.get("contraseña").value,
     };
 
-    /* Comprueba que el usuario existe */
+    this.funciones.presentLoading();
+
     this.userService.recuperarUsuarioID(data.usuario, data.contraseña)
       .then((d) => {
 
         if (d.empty == true) {
 
-          //this.loadingController.dismiss();
+          this.funciones.hideLoading()
 
-          //this.funcionesService.mostrarToast("No se han encontrado usuarios");
+          this.funciones.presentToast("No se han encontrado usuarios");
 
         } else {
 
@@ -95,19 +98,18 @@ export class ModalLoginPage implements OnInit {
           this.datosUsuario = d.docs[0].data();
           this.userService.iniciarSesion(id, this.datosUsuario);
 
-          //this.loadingController.dismiss();
-
           if (this.userService.isLogged()) {
-            this.groupService.inicializarGrupo()
-            //this.funcionesService.mostrarToast("Sesión iniciada correctamente");
-            //this.vibration.vibrate(50);
-            //this.funcionesService.mostrarToast("Estás logeado");
-            //this.modalController.dismiss()
 
+            this.groupService.inicializarGrupo()
+            this.funciones.hideLoading()
+            this.funciones.presentToast("Sesión iniciada correctamente");
+            //this.vibration.vibrate(50);
+          
           } else {
 
-            //this.funcionesService.mostrarToast("Problemas al iniciar sesión");
-
+            this.funciones.hideLoading()
+            this.funciones.presentToast("Problemas al iniciar sesión");
+          
           }
 
         }
@@ -122,28 +124,6 @@ export class ModalLoginPage implements OnInit {
 
   ionViewDidEnter() {
     this.SwipedTabsIndicator = document.getElementById("indicator");
-  }
-
-  //Loading
-
-  /**
-   * Muestra el loading en pantalla 
-   * @param msg El texto que se muestra en el loading
-   */
-  async presentLoading(msg) {
-
-    let myloading = await this.loadingController.create({
-      message: msg
-    });
-
-    return await myloading.present();
-  }
-
-  /**
-   * Finaliza el loading
-   */
-  finishLoading() {
-    this.loadingController.dismiss();
   }
 
   /**

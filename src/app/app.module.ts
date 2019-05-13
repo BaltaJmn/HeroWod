@@ -1,3 +1,4 @@
+import { LogoutComponent } from './components/logout/logout.component';
 import { HomePage } from './home/home.page';
 import { ModalLoginPage } from './modals/modal-login/modal-login.page';
 import { NgModule } from '@angular/core';
@@ -22,8 +23,8 @@ import { Toast } from '@ionic-native/toast/ngx';
 
 
 @NgModule({
-  declarations: [AppComponent, ModalLoginPage],
-  entryComponents: [AppComponent, ModalLoginPage],
+  declarations: [AppComponent, ModalLoginPage, LogoutComponent],
+  entryComponents: [AppComponent, ModalLoginPage, LogoutComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

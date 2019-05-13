@@ -1,10 +1,10 @@
 export interface Usuario {
-    logged?: boolean,
-    id?: string,
-    usuario?: string,
-    contraseña?: string,
-    admin?: boolean,
-    dias?: string,
-    avatar?: string,
-    grupo?: string,
+    logged?: Boolean,
+    id?: String,
+    usuario?: String,
+    contraseña?: String,
+    admin?: Boolean,
+    dias?: String,
+    avatar?: String,
+    grupo?: String,
 }

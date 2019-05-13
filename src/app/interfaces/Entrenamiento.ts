@@ -1,4 +1,5 @@
 export interface Entrenamiento {
-    id?: string,
+    id?: String,
+    numeroEntrenamiento?: String,
     ejercicios?: Array<any>
 }

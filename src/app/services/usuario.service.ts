@@ -49,6 +49,19 @@ export class UsuarioService {
     //this.storage.set('datosSesion', this.datosSesion);
   }
 
+  cerrarSesion() {
+    return new Promise((resolve, reject) => {
+      this.usuario.logged = false;
+      this.usuario.id = "";
+      this.usuario.usuario = "";
+      this.usuario.contraseña = "";
+      this.usuario.admin = false;
+      this.usuario.dias = "";
+      this.usuario.avatar = environment.defaultAvatar;
+      this.usuario.grupo = "";
+    });
+  }
+
 
   isLogged(): Boolean {
     return this.usuario.logged;

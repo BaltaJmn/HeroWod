@@ -32,7 +32,7 @@
 
       <ion-content>
 
-        <ion-item>
+        <ion-item *ngIf="logged">
           <ion-icon slot="start" name="camera"></ion-icon>
           <ion-label>Escaneo Diario</ion-label>
         </ion-item>
@@ -53,7 +53,7 @@
               <span>Iniciar Sesión</span>
             </ion-button>
 
-            <ion-button color="primary" *ngIf="logged">
+            <ion-button color="primary" *ngIf="logged" (click)="mostrarPopoverLogout()">
               <ion-icon slot="end" name="log-out"></ion-icon>
               <span>Cerrar Sesión</span>
             </ion-button>

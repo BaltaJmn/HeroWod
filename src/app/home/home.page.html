@@ -11,6 +11,7 @@
 
 <ion-content *ngIf="!logged">
   <p>Inicia Sesión para acceder a los entrenamientos</p>
+  <ion-button (click)="prueba()"></ion-button>
 </ion-content>
 
 <ion-content *ngIf="logged">
@@ -19,4 +20,5 @@
       <ion-label>{{workout}}</ion-label>
     </ion-item>
   </ion-item-sliding>
+  <ion-button (click)="prueba()"></ion-button>
 </ion-content>

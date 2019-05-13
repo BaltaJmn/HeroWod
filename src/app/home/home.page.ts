@@ -1,4 +1,6 @@
-import { Events } from '@ionic/angular';
+import { EntrenamientosService } from './../services/entrenamientos.service';
+import { FuncionesService } from './../services/funciones.service';
+import { Events, ModalController } from '@ionic/angular';
 import { GrupoService } from './../services/grupo.service';
 import { Component } from '@angular/core';
 import { UsuarioService } from '../services/usuario.service';
@@ -16,19 +18,29 @@ export class HomePage {
   groupActualN: any = "";
   groupMaxN: any = "";
 
-  logged: boolean = false;
+  logged: Boolean = false;
+  admin: Boolean = false;
 
   constructor(
     public userService: UsuarioService,
     public groupService: GrupoService,
-    public events: Events
+    public workoutService: EntrenamientosService,
+    public events: Events,
+    public modalController: ModalController
   ){
-    events.subscribe('logged', () => {
-      this.logged = true;      
+    events.subscribe('loadScreen', () => {
+      this.logged = this.userService.isLogged(); 
+      this.admin = this.userService.isAdmin();  
+         
       this.groupNumber = this.groupService.getNumeroGrupo();
-      this.groupWorkout = this.groupService.getEntrenamientos();
+      this.groupWorkout = this.workoutService.getEjercicios();
       this.groupActualN = this.groupService.getActual();
       this.groupMaxN = this.groupService.getMax();
+      this.modalController.dismiss();
     });
+  }
+
+  prueba(){
+    console.log(this.userService.isAdmin())
   }
 }

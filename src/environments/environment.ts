@@ -13,7 +13,8 @@ export const environment = {
     storageBucket: "",
     messagingSenderId: "732499509842",
     usuarios: "usuarios",
-    grupos: "grupos"
+    grupos: "grupos",
+    entrenamientos: "entrenamientos"
   },
 
   defaultAvatar: "assets/defaultProfile.jpg"

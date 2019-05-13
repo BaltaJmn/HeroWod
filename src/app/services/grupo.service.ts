@@ -1,3 +1,4 @@
+import { EntrenamientosService } from './entrenamientos.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Grupo } from './../interfaces/Grupo';
 import { AngularFirestore } from 'angularfire2/firestore';
@@ -12,6 +13,7 @@ export class GrupoService {
 
   gruposColeccion: any;
   grupo: Grupo = {};
+  preparado: any = {};
 
   constructor(
     private fireStore: AngularFirestore,
@@ -28,29 +30,32 @@ export class GrupoService {
   }
 
   inicializarGrupo(){
-    this.recuperarGrupoUsuario()
-    .then((d) => {
+    this.recuperarGrupoUsuario().then((d) => {
       d.forEach(t => {
         this.grupo.id = t.id
         this.grupo.numeroGrupo = t.data().numeroGrupo
         this.grupo.entrenamientos = t.data().entrenamientos
         this.grupo.actual = t.data().actual
         this.grupo.max = t.data().max
-      });
-      this.events.publish('logged');
+      })
+      this.events.publish('loadWorkout')
     });
   }
 
   crearGrupo() {
-    let entrenamiento = [
-      "asd",
-      "123",
-      "asd",
-      "123",
+    let diasParaEntrenar = [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
     ]
+    
     let data = {
-      numeroGrupo: "1",
-      entrenamientos: entrenamiento,
+      numeroGrupo: "6",
+      entrenamientos: diasParaEntrenar,
       actual: "1",
       max: "20"
     }
@@ -76,6 +81,11 @@ export class GrupoService {
 
   getEntrenamientos() {
     return this.grupo.entrenamientos;
+  }
+
+  getEntrenamientoPorDia(){
+    const f: Date = new Date();
+    return this.grupo.entrenamientos[f.getDay() - 1]
   }
 
   getActual() {

@@ -1,10 +1,12 @@
+import { FuncionesService } from './services/funciones.service';
+import { LogoutComponent } from './components/logout/logout.component';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { GrupoService } from './services/grupo.service';
 import { HomePage } from './home/home.page';
 import { ModalLoginPage } from './modals/modal-login/modal-login.page';
 import { Component } from '@angular/core';
 
-import { Platform, ModalController, Events } from '@ionic/angular';
+import { Platform, ModalController, Events, PopoverController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
@@ -32,22 +34,26 @@ export class AppComponent {
   avatar: String = "";
   grupo: String = "";
 
-  logged: boolean = false;
+  logged: Boolean = false;
+  admin: Boolean = false;
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private modalController: ModalController,
-    private homePage: HomePage,
-    private groupService: GrupoService,
     private userService: UsuarioService,
+    private groupService: GrupoService,
+    private funciones: FuncionesService,
+    private modalController: ModalController,
+    private popoverController: PopoverController,
+    private homePage: HomePage,
     private events: Events
   ) {
     this.initializeApp();
 
-    events.subscribe('logged', () => {
-      this.logged = true;
+    events.subscribe('loadScreen', () => {
+      this.logged = this.userService.isLogged(); 
+      this.admin = this.userService.isAdmin();  
       this.username = this.userService.getUsuario();  
       this.dias = this.userService.getDias();
       this.avatar = this.userService.getAvatar();
@@ -66,7 +72,6 @@ export class AppComponent {
 
   ionViewDidEnter() {
     this.avatar = this.userService.getAvatar();
-    this.descuento
   }
 
   async mostrarModalLogin() {
@@ -74,5 +79,18 @@ export class AppComponent {
       component: ModalLoginPage
     });
     return await modal.present();
+  }
+
+  async mostrarPopoverLogout() {
+    const popover = await this.popoverController.create({
+      component: LogoutComponent,
+      translucent: true
+    });
+    popover.onDidDismiss().then(() => {
+      this.logged = this.userService.isLogged();
+      this.avatar = this.userService.getAvatar();
+      this.funciones.hideLoading()
+    });
+    return await popover.present();
   }
 }
