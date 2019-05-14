@@ -62,6 +62,28 @@ export class UsuarioService {
     });
   }
 
+  getRanking(): Promise<Usuario[]> {
+
+    console.log(this.usuario.usuario);
+
+    return new Promise((resolve) => {
+
+      let lreq: Usuario[] = [];
+      let query;
+
+      query = this.usuariosColeccion.ref.orderBy("dias", "desc").get()
+
+      query.then((d) => {
+
+        d.forEach((u) => {
+          let x = { "id": u.id, ...u.data() };
+          lreq.push(x);
+        });
+
+        resolve(lreq);
+      });
+    });
+  }
 
   isLogged(): Boolean {
     return this.usuario.logged;

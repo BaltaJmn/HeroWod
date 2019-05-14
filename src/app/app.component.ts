@@ -1,3 +1,4 @@
+import { ModalRankingComponent } from './modals/modal-ranking/modal-ranking.component';
 import { FuncionesService } from './services/funciones.service';
 import { LogoutComponent } from './components/logout/logout.component';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -77,6 +78,13 @@ export class AppComponent {
   async mostrarModalLogin() {
     const modal = await this.modalController.create({
       component: ModalLoginPage
+    });
+    return await modal.present();
+  }
+
+  async mostrarModalRanking() {
+    const modal = await this.modalController.create({
+      component: ModalRankingComponent
     });
     return await modal.present();
   }

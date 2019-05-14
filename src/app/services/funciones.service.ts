@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Toast } from '@ionic-native/toast/ngx';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { LoadingController, ToastController, ModalController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,8 @@ export class FuncionesService {
   constructor(
     private toast: Toast,
     private loadingController: LoadingController,
-    public toastController: ToastController
+    private toastController: ToastController,
+    private modalController: ModalController
   ) { }
 
   async presentToast(msg) {
@@ -31,7 +32,11 @@ export class FuncionesService {
   }
 
   hideLoading(){
-    this.loadingController.dismiss()
+    this.loadingController.dismiss();
+  }
+
+  hideModal(){
+    this.modalController.dismiss();
   }
   
 }

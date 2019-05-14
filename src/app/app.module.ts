@@ -20,11 +20,12 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Toast } from '@ionic-native/toast/ngx';
+import { ModalRankingComponent } from './modals/modal-ranking/modal-ranking.component';
 
 
 @NgModule({
-  declarations: [AppComponent, ModalLoginPage, LogoutComponent],
-  entryComponents: [AppComponent, ModalLoginPage, LogoutComponent],
+  declarations: [AppComponent, ModalLoginPage, LogoutComponent, ModalRankingComponent],
+  entryComponents: [AppComponent, ModalLoginPage, LogoutComponent, ModalRankingComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
