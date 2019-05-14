@@ -13,11 +13,11 @@
   <ion-segment [(ngModel)]="category" (ionChange)="slides.slideTo(category)"
     color="primary">
 
-    <ion-segment-button layout="icon-start" value="0">
+    <ion-segment-button layout="icon-start" value="0" *ngIf="!logged">
       <ion-icon name="log-in" style="margin-right:1px;zoom:0.8"></ion-icon>
     </ion-segment-button>
 
-    <ion-segment-button layout="icon-start" value="1">
+    <ion-segment-button layout="icon-start" value="1" *ngIf="admin">
       <ion-icon name="person-add" style="margin-right:1px;zoom:0.8"></ion-icon>
     </ion-segment-button>
 
@@ -37,7 +37,7 @@
     #SwipedTabsSlider
     (ionSlideDrag)="animateIndicator($event)">
 
-    <ion-slide>
+    <ion-slide *ngIf="!logged">
 
       <form [formGroup]="loginUserFormGroup" (ngSubmit)="login()">
 
@@ -60,7 +60,7 @@
     </ion-slide>
 
 
-    <ion-slide>
+    <ion-slide *ngIf="admin">
 
       <form [formGroup]="createUserFormGroup" (ngSubmit)="register()">
         <ion-item>
@@ -72,6 +72,11 @@
           <ion-label>Contraseña</ion-label>
           <ion-input type="password" placeholder="Contraseña"
             formControlName="contraseña"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Admin</ion-label>
+          <ion-checkbox slot="end" [(ngModel)]="adminCheckbox" [ngModelOptions]="{standalone: true}"></ion-checkbox>
         </ion-item>
 
         <ion-button type="submit" [disabled]="!createUserFormGroup.valid">Registrar</ion-button>

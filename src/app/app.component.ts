@@ -71,8 +71,9 @@ export class AppComponent {
     });
   }
 
-  ionViewDidEnter() {
+  ionViewWillEnter() {
     this.avatar = this.userService.getAvatar();
+
   }
 
   async mostrarModalLogin() {
@@ -96,6 +97,7 @@ export class AppComponent {
     });
     popover.onDidDismiss().then(() => {
       this.logged = this.userService.isLogged();
+      this.admin = this.userService.isAdmin();
       this.avatar = this.userService.getAvatar();
       this.funciones.hideLoading()
     });

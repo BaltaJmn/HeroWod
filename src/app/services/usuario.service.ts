@@ -1,3 +1,4 @@
+import { Events } from '@ionic/angular';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Usuario } from './../interfaces/Usuario';
 import { Injectable } from '@angular/core';
@@ -13,6 +14,7 @@ export class UsuarioService {
 
   constructor(
     private fireStore: AngularFirestore,
+    private events: Events
   ) { 
 
     this.usuariosColeccion = fireStore.collection<any>(environment.firebaseConfig.usuarios);
@@ -63,23 +65,18 @@ export class UsuarioService {
   }
 
   getRanking(): Promise<Usuario[]> {
-
-    console.log(this.usuario.usuario);
-
     return new Promise((resolve) => {
 
       let lreq: Usuario[] = [];
       let query;
 
       query = this.usuariosColeccion.ref.orderBy("dias", "desc").get()
-
+      
       query.then((d) => {
-
         d.forEach((u) => {
           let x = { "id": u.id, ...u.data() };
           lreq.push(x);
         });
-
         resolve(lreq);
       });
     });

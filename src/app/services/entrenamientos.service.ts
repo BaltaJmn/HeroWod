@@ -37,11 +37,7 @@ export class EntrenamientosService {
    }
 
   recuperarEntrenamientosGrupo(){
-    if (this.groupService.getEntrenamientoPorDia() == "false"){
-      return this.entrenamiento.ejercicios = ["descanso"];
-    } else {
-      return this.entrenamientosColeccion.ref.where("numEntreno", "==", this.groupService.getEntrenamientoPorDia()).get();
-    }
+    return this.entrenamientosColeccion.ref.where("numEntreno", "==", this.groupService.getEntrenamientoPorDia()).get();
   }
 
    crearEntrenamiento() {
@@ -51,7 +47,7 @@ export class EntrenamientosService {
     ]
     
     let data = {
-      numeroEntrenamiento: "1",
+      numEntreno: "0",
       ejercicios: array,
     }
     return this.entrenamientosColeccion.add(data);

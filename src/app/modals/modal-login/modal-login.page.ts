@@ -29,14 +29,18 @@ export class ModalLoginPage implements OnInit {
   tabs = ["selectTab(0)", "selectTab(1)"];
   public category: any = "0";
   ntabs = 2;
-  titulo: any = "Iniciar Sesión";
+  titulo: any = 'Iniciar Sesión';
 
   //Formularios
   public createUserFormGroup: FormGroup;
   public loginUserFormGroup: FormGroup;
+  public adminCheckbox: Boolean = false;
 
   //Inicio Sesión
   public datosUsuario = [];
+
+  admin: Boolean = false;
+  logged: Boolean = false;
 
   constructor(
     public userService: UsuarioService,
@@ -50,7 +54,7 @@ export class ModalLoginPage implements OnInit {
   ) {
     this.createUserFormGroup = this.formBuilder.group({
       usuario: ['', Validators.required],
-      contraseña: ['', Validators.required]
+      contraseña: ['', Validators.required],
     })
 
     this.loginUserFormGroup = this.formBuilder.group({
@@ -59,18 +63,41 @@ export class ModalLoginPage implements OnInit {
     })
   }
 
+  ionViewWillEnter(){
+    if (this.userService.isAdmin()){
+      this.titulo = 'Crear Usuario'
+    }
+    this.admin = this.userService.isAdmin();
+    this.logged = this.userService.isLogged();
+  } 
+
   register(){
 
     let data = {
       usuario: this.createUserFormGroup.get("usuario").value,
       contraseña: this.createUserFormGroup.get("contraseña").value,
-      admin: false,
+      admin: this.adminCheckbox,
       dias: 0,
       avatar: environment.defaultAvatar,
       grupo: "1"
     };
 
-    this.userService.crearUsuario(data);
+    this.funciones.presentLoading();
+
+    this.userService.crearUsuario(data)
+      .then(() => {
+        this.createUserFormGroup.setValue({
+          usuario: '',
+          contraseña: ''
+        });
+
+        this.funciones.hideLoading();
+        this.funciones.presentToast('Usuario creado correctamente')
+      })
+      .catch(() => {
+        this.funciones.hideLoading();
+        this.funciones.presentToast('No se ha podido crear el usuario deseado');
+      });
     
   }
 

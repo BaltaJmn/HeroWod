@@ -41,6 +41,6 @@ export class HomePage {
   }
 
   prueba(){
-    console.log(this.userService.isAdmin())
+    this.workoutService.crearEntrenamiento()
   }
 }
