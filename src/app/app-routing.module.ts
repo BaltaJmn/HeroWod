@@ -15,7 +15,8 @@ const routes: Routes = [
     path: 'list',
     loadChildren: './list/list.module#ListPageModule'
   },
-  { path: 'modal-login', loadChildren: './modals/modal-login/modal-login.module#ModalLoginPageModule' }
+  { path: 'modal-login', loadChildren: './modals/modal-login/modal-login.module#ModalLoginPageModule' },
+  { path: 'modal-edit', loadChildren: './modals/modal-edit/modal-edit.module#ModalEditPageModule' }
 ];
 
 @NgModule({

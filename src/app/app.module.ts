@@ -1,3 +1,5 @@
+import { EditComponent } from './components/edit/edit.component';
+import { ModalEditPage } from './modals/modal-edit/modal-edit.page';
 import { LogoutComponent } from './components/logout/logout.component';
 import { HomePage } from './home/home.page';
 import { ModalLoginPage } from './modals/modal-login/modal-login.page';
@@ -24,8 +26,8 @@ import { ModalRankingComponent } from './modals/modal-ranking/modal-ranking.comp
 
 
 @NgModule({
-  declarations: [AppComponent, ModalLoginPage, LogoutComponent, ModalRankingComponent],
-  entryComponents: [AppComponent, ModalLoginPage, LogoutComponent, ModalRankingComponent],
+  declarations: [AppComponent, ModalLoginPage, LogoutComponent, ModalRankingComponent, ModalEditPage, EditComponent],
+  entryComponents: [AppComponent, ModalLoginPage, LogoutComponent, ModalRankingComponent, ModalEditPage, EditComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

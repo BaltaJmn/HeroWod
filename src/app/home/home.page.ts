@@ -1,3 +1,4 @@
+import { ModalEditPage } from './../modals/modal-edit/modal-edit.page';
 import { EntrenamientosService } from './../services/entrenamientos.service';
 import { FuncionesService } from './../services/funciones.service';
 import { Events, ModalController } from '@ionic/angular';
@@ -38,6 +39,13 @@ export class HomePage {
       this.groupMaxN = this.groupService.getMax();
       this.modalController.dismiss();
     });
+  }
+
+  async mostrarModalEdit() {
+    const modal = await this.modalController.create({
+      component: ModalEditPage
+    });
+    return await modal.present();
   }
 
   prueba(){

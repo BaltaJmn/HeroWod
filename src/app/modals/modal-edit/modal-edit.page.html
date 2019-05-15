@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Editar Entrenamiento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list #dynamicList id="dynamicList">
+      <ion-item-sliding *ngFor="let ejercicio of ejerciciosDia; let i = index">
+  
+        <ion-item>
+          <ion-label>{{ejercicio}}</ion-label>
+          <ion-icon slot="end" name="medal" (click)="mostrarPopoverLogout(i)"></ion-icon>
+        </ion-item>
+  
+      </ion-item-sliding>
+    </ion-list>
+  
+    <ion-button type="submit"> Añador </ion-button>
+    
+</ion-content>

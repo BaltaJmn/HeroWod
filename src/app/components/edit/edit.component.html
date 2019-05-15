@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Editando</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <form [formGroup]="editFormGroup" (ngSubmit)="edit()">
+  
+      <ion-item>
+        <ion-label>Ejercicio</ion-label>
+        <ion-input formControlName="ejercicioParaEditar"></ion-input>
+      </ion-item>
+  
+      <ion-button type="submit" [disabled]="!editFormGroup.valid"> Confirmar </ion-button>
+  
+    </form>
+  </ion-content>
+  

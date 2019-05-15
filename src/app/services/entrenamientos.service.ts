@@ -53,6 +53,10 @@ export class EntrenamientosService {
     return this.entrenamientosColeccion.add(data);
   }
 
+  actualizarEntrenamiento(id, data){
+    return this.entrenamientosColeccion.doc(id).set(data);
+  }
+
   getId() {
     return this.entrenamiento.id;
   }

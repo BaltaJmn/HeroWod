@@ -22,3 +22,10 @@
   </ion-item-sliding>
   <ion-button (click)="prueba()"></ion-button>
 </ion-content>
+
+<ion-fab vertical="bottom" horizontal="end">
+  <ion-fab-button style="margin-right: 20px;
+    margin-bottom: 20px" *ngIf="admin" (click)="mostrarModalEdit()">
+    <div><ion-icon slot="end" name="create"></ion-icon></div>
+  </ion-fab-button>
+</ion-fab>
