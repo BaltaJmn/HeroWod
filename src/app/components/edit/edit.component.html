@@ -1,11 +1,11 @@
 <ion-header>
     <ion-toolbar>
-      <ion-title>Editando</ion-title>
+      <ion-title>{{titulo}}</ion-title>
     </ion-toolbar>
   </ion-header>
   
   <ion-content padding>
-    <form [formGroup]="editFormGroup" (ngSubmit)="edit()">
+    <form [formGroup]="editFormGroup" (ngSubmit)="loadData()">
   
       <ion-item>
         <ion-label>Ejercicio</ion-label>

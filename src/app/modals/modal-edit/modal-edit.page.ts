@@ -29,11 +29,14 @@ export class ModalEditPage implements OnInit {
     console.log(this.ejerciciosDia[i])
   }
 
-  async mostrarPopoverLogout(i) {
+  async mostrarPopoverLogout(i=null) {
     const popover = await this.popoverController.create({
       component: EditComponent,
       componentProps: {id:i},
       translucent: true
+    }); 
+    popover.onDidDismiss().then(() => {
+      this.ejerciciosDia = this.workoutService.getEjercicios();
     });
     return await popover.present();
   }
