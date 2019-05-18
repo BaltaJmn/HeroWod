@@ -1,3 +1,4 @@
+import { ConfirmComponent } from './components/confirm/confirm.component';
 import { EditComponent } from './components/edit/edit.component';
 import { ModalEditPage } from './modals/modal-edit/modal-edit.page';
 import { LogoutComponent } from './components/logout/logout.component';
@@ -24,10 +25,15 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Toast } from '@ionic-native/toast/ngx';
 import { ModalRankingComponent } from './modals/modal-ranking/modal-ranking.component';
 
+//Native
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { Vibration } from '@ionic-native/vibration/ngx';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 
 @NgModule({
-  declarations: [AppComponent, ModalLoginPage, LogoutComponent, ModalRankingComponent, ModalEditPage, EditComponent],
-  entryComponents: [AppComponent, ModalLoginPage, LogoutComponent, ModalRankingComponent, ModalEditPage, EditComponent],
+  declarations: [AppComponent, ModalLoginPage, LogoutComponent, ModalRankingComponent, ModalEditPage, EditComponent, ConfirmComponent],
+  entryComponents: [AppComponent, ModalLoginPage, LogoutComponent, ModalRankingComponent, ModalEditPage, EditComponent, ConfirmComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -42,7 +48,11 @@ import { ModalRankingComponent } from './modals/modal-ranking/modal-ranking.comp
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Toast,
-    HomePage
+    HomePage,
+    Vibration,
+    LocalNotifications,
+    Camera,
+    QRScanner,
   ],
   bootstrap: [AppComponent]
 })

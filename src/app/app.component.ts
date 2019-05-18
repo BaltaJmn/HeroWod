@@ -1,3 +1,4 @@
+import { ConfirmComponent } from './components/confirm/confirm.component';
 import { ModalRankingComponent } from './modals/modal-ranking/modal-ranking.component';
 import { FuncionesService } from './services/funciones.service';
 import { LogoutComponent } from './components/logout/logout.component';
@@ -73,7 +74,6 @@ export class AppComponent {
 
   ionViewWillEnter() {
     this.avatar = this.userService.getAvatar();
-
   }
 
   async mostrarModalLogin() {
@@ -100,6 +100,20 @@ export class AppComponent {
       this.admin = this.userService.isAdmin();
       this.avatar = this.userService.getAvatar();
       this.funciones.hideLoading()
+    });
+    return await popover.present();
+  }
+
+  async mostrarActualizarFoto() {
+    const popover = await this.popoverController.create({
+      component: ConfirmComponent,
+      translucent: true
+    });
+    popover.onDidDismiss().then(() => {
+
+      this.avatar = this.userService.getAvatar();
+      this.funciones.presentToast('Imagen actualizada correctamente')
+
     });
     return await popover.present();
   }

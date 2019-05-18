@@ -3,6 +3,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { Usuario } from './../interfaces/Usuario';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class UsuarioService {
 
   constructor(
     private fireStore: AngularFirestore,
-    private events: Events
+    private events: Events,
+    private camera: Camera
   ) { 
 
     this.usuariosColeccion = fireStore.collection<any>(environment.firebaseConfig.usuarios);
@@ -82,6 +84,61 @@ export class UsuarioService {
     });
   }
 
+  updateProfilePhoto() {
+    return new Promise((resolve, reject) => {
+
+      const options: CameraOptions = {
+        quality: 100,
+        destinationType: this.camera.DestinationType.DATA_URL,  /*FILE_URI */
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType: this.camera.MediaType.PICTURE,
+        cameraDirection: 0,
+        correctOrientation: true,
+        saveToPhotoAlbum: true,
+        targetWidth: 200
+      };
+
+      let data = {
+        admin: this.usuario.admin,
+        avatar: this.usuario.avatar,
+        contraseña: this.usuario.contraseña,
+        dias: this.usuario.dias,
+        grupo: this.usuario.grupo,
+        usuario: this.usuario.usuario, 
+      };
+
+      this.camera.getPicture(options)
+        .then((imageData) => {
+          let base64Image = 'data:image/jpeg;base64, ' + imageData;
+          data.avatar = base64Image;
+
+          this.setAvatar(data.avatar);
+
+          this.usuariosColeccion.ref.where("usuario", "==", data.usuario).get()
+            .then((d) => {
+              this.usuariosColeccion.doc(d.docs[0].id).update(data).then(() => {
+                resolve();
+              });
+            });
+        });
+    });
+  }
+
+  searchUser(user){
+    return this.usuariosColeccion.ref.where("usuario", "==", user).get()
+  }
+
+  searchCurrentUser(){
+    return this.usuariosColeccion.ref.where("usuario", "==", this.usuario).get()
+  }
+
+  updateDataUser(data){
+    return this.usuariosColeccion.ref.where("usuario", "==", this.usuario).get()
+      .then((d) => {
+        this.usuariosColeccion.doc(d.docs[0].id).update(data);
+      });
+  }
+
   isLogged(): Boolean {
     return this.usuario.logged;
   }
@@ -105,6 +162,10 @@ export class UsuarioService {
 
   getDias() {
     return this.usuario.dias;
+  }
+
+  setAvatar(val){
+    this.usuario.avatar = val;
   }
 
   getAvatar() {

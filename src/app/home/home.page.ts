@@ -48,6 +48,12 @@ export class HomePage {
     return await modal.present();
   }
 
+  selectDay(){
+    let selected = document.getElementById("select")
+    //let numeroEntrenamientoSelect = 
+    console.log(selected.attributes)
+  }
+
   prueba(){
     this.workoutService.crearEntrenamiento()
   }
