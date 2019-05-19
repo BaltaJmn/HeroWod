@@ -1,9 +1,5 @@
-import { GrupoService } from './grupo.service';
-import { UsuarioService } from 'src/app/services/usuario.service';
 import { Injectable } from '@angular/core';
-import { Toast } from '@ionic-native/toast/ngx';
-import { LoadingController, ToastController, ModalController, PopoverController } from '@ionic/angular';
-import { EntrenamientosService } from './entrenamientos.service';
+import { LoadingController, ToastController, ModalController, PopoverController, MenuController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +7,11 @@ import { EntrenamientosService } from './entrenamientos.service';
 export class FuncionesService {
 
   constructor(
-    private userService: UsuarioService,
-    private groupService: GrupoService,
-    private workoutService: EntrenamientosService,
-    private toast: Toast,
     private loadingController: LoadingController,
     private toastController: ToastController,
     private modalController: ModalController,
     private popoverContoller: PopoverController,
+    private menuController: MenuController
   ) { }
 
   async presentToast(msg) {
@@ -48,6 +41,10 @@ export class FuncionesService {
 
   hidePopover(){
     this.popoverContoller.dismiss()
+  }
+
+  hideMenu(){
+    this.menuController.close()
   }
   
 }

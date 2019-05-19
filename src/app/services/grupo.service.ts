@@ -27,6 +27,7 @@ export class GrupoService {
     this.grupo.entrenamientos;
     this.grupo.actual = "";
     this.grupo.max = "";
+    this.grupo.horario = "";
   }
 
   inicializarGrupo(){
@@ -37,29 +38,10 @@ export class GrupoService {
         this.grupo.entrenamientos = t.data().entrenamientos
         this.grupo.actual = t.data().actual
         this.grupo.max = t.data().max
+        this.grupo.horario = t.data().horario
       })
       this.events.publish('loadWorkout')
     });
-  }
-
-  crearGrupo() {
-    let diasParaEntrenar = [
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7"
-    ]
-    
-    let data = {
-      numeroGrupo: "6",
-      entrenamientos: diasParaEntrenar,
-      actual: "1",
-      max: "20"
-    }
-    return this.gruposColeccion.add(data);
   }
 
   recuperarGrupoUsuario() {
@@ -85,7 +67,30 @@ export class GrupoService {
 
   getEntrenamientoPorDia(){
     const f: Date = new Date();
-    return this.grupo.entrenamientos[f.getDay() - 1]
+
+    switch(f.getDay()){
+      case 0: {
+        return this.grupo.entrenamientos[0];
+      }
+      case 1: {
+        return this.grupo.entrenamientos[1];
+      }
+      case 2: {
+        return this.grupo.entrenamientos[2];
+      }
+      case 3: {
+        return this.grupo.entrenamientos[3];
+      }
+      case 4: {
+        return this.grupo.entrenamientos[4];
+      }
+      case 5: {
+        return this.grupo.entrenamientos[5];
+      }
+      case 6: {
+        return this.grupo.entrenamientos[6];
+      }
+    } 
   }
 
   getActual() {
@@ -94,5 +99,9 @@ export class GrupoService {
 
   getMax() {
     return this.grupo.max;
+  }
+
+  getHorario(){
+    return this.grupo.horario;
   }
 }

@@ -3,5 +3,6 @@ export interface Grupo {
     numeroGrupo?: String, 
     entrenamientos?: any,
     actual?: String, 
-    max?: String
+    max?: String,
+    horario?: String
 }

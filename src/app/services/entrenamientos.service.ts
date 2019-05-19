@@ -40,19 +40,6 @@ export class EntrenamientosService {
     return this.entrenamientosColeccion.ref.where("numEntreno", "==", this.groupService.getEntrenamientoPorDia()).get();
   }
 
-   crearEntrenamiento() {
-    let array = [
-      "Comer",
-      "Dormir",
-    ]
-    
-    let data = {
-      numEntreno: "0",
-      ejercicios: array,
-    }
-    return this.entrenamientosColeccion.add(data);
-  }
-
   actualizarEntrenamiento(id, data){
     return this.entrenamientosColeccion.doc(id).set(data);
   }

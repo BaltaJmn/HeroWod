@@ -25,10 +25,6 @@ export class ModalEditPage implements OnInit {
 
   ngOnInit() {}
 
-  singleEdit(i){
-    console.log(this.ejerciciosDia[i])
-  }
-
   async mostrarPopoverLogout(i=null) {
     const popover = await this.popoverController.create({
       component: EditComponent,

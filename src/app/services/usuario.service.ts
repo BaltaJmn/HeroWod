@@ -1,9 +1,11 @@
+import { FuncionesService } from './funciones.service';
 import { Events } from '@ionic/angular';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Usuario } from './../interfaces/Usuario';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +15,14 @@ export class UsuarioService {
   usuariosColeccion: any;
   usuario: Usuario = {};
 
+  
+
   constructor(
+    private funciones: FuncionesService,
     private fireStore: AngularFirestore,
     private events: Events,
-    private camera: Camera
+    private camera: Camera,
+    private qrScanner: QRScanner,
   ) { 
 
     this.usuariosColeccion = fireStore.collection<any>(environment.firebaseConfig.usuarios);
@@ -26,7 +32,7 @@ export class UsuarioService {
     this.usuario.usuario = "";
     this.usuario.contraseña = "";
     this.usuario.admin = false;
-    this.usuario.dias = "";
+    this.usuario.dias = 0;
     this.usuario.avatar = environment.defaultAvatar;
     this.usuario.grupo = "";
 
@@ -34,6 +40,20 @@ export class UsuarioService {
 
   crearUsuario(datos) {
     return this.usuariosColeccion.add(datos);
+  }
+
+  asd() {
+
+    let data = {
+      admin: this.usuario.admin,
+      avatar: this.usuario.avatar,
+      contraseña: this.usuario.contraseña,
+      dias: this.usuario.dias + 1,
+      grupo: this.usuario.grupo,
+      usuario: this.usuario.usuario, 
+    };
+
+    return this.usuariosColeccion.add(data);
   }
 
   recuperarUsuarioID(usuario, contraseña) {
@@ -56,13 +76,13 @@ export class UsuarioService {
   cerrarSesion() {
     return new Promise((resolve, reject) => {
       this.usuario.logged = false;
-      this.usuario.id = "";
-      this.usuario.usuario = "";
-      this.usuario.contraseña = "";
+      this.usuario.id = null;
+      this.usuario.usuario = null;
+      this.usuario.contraseña = null;
       this.usuario.admin = false;
-      this.usuario.dias = "";
+      this.usuario.dias = null;
       this.usuario.avatar = environment.defaultAvatar;
-      this.usuario.grupo = "";
+      this.usuario.grupo = null;
     });
   }
 
@@ -122,7 +142,7 @@ export class UsuarioService {
             });
         });
     });
-  }
+  }  
 
   searchUser(user){
     return this.usuariosColeccion.ref.where("usuario", "==", user).get()
@@ -137,6 +157,29 @@ export class UsuarioService {
       .then((d) => {
         this.usuariosColeccion.doc(d.docs[0].id).update(data);
       });
+  }
+
+  updateDay(){
+    return new Promise((resolve, reject) => {
+
+      let data = {
+        admin: this.usuario.admin,
+        avatar: this.usuario.avatar,
+        contraseña: this.usuario.contraseña,
+        dias: this.usuario.dias + 1,
+        grupo: this.usuario.grupo,
+        usuario: this.usuario.usuario, 
+      }
+      
+      this.setDias(data.dias)
+
+      this.usuariosColeccion.ref.where("usuario", "==", data.usuario).get()
+        .then((d) => {
+          this.usuariosColeccion.doc(d.docs[0].id).update(data).then(() => {
+            this.events.publish('updateDay');
+          });
+        });
+    });
   }
 
   isLogged(): Boolean {
@@ -164,12 +207,16 @@ export class UsuarioService {
     return this.usuario.dias;
   }
 
-  setAvatar(val){
-    this.usuario.avatar = val;
+  setDias(val) {
+    this.usuario.dias = val;
   }
 
   getAvatar() {
     return this.usuario.avatar;
+  }
+
+  setAvatar(val){
+    this.usuario.avatar = val;
   }
 
   getGrupo() {

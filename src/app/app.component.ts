@@ -1,16 +1,18 @@
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { ModalRankingComponent } from './modals/modal-ranking/modal-ranking.component';
 import { FuncionesService } from './services/funciones.service';
 import { LogoutComponent } from './components/logout/logout.component';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { GrupoService } from './services/grupo.service';
-import { HomePage } from './home/home.page';
 import { ModalLoginPage } from './modals/modal-login/modal-login.page';
 import { Component } from '@angular/core';
 
 import { Platform, ModalController, Events, PopoverController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
+import { EntrenamientosService } from './services/entrenamientos.service';
 
 @Component({
   selector: 'app-root',
@@ -39,17 +41,24 @@ export class AppComponent {
   logged: Boolean = false;
   admin: Boolean = false;
 
+  //QR
+  scanSub: any;
+
   constructor(
+    private userService: UsuarioService,
+    private groupService: GrupoService,
+    private workoutService: EntrenamientosService,
+
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private userService: UsuarioService,
-    private groupService: GrupoService,
+    
     private funciones: FuncionesService,
     private modalController: ModalController,
     private popoverController: PopoverController,
-    private homePage: HomePage,
-    private events: Events
+    private events: Events,
+    private qrScanner: QRScanner,
+    private localNotifications: LocalNotifications
   ) {
     this.initializeApp();
 
@@ -62,6 +71,12 @@ export class AppComponent {
       this.grupo = this.userService.getGrupo();  
 
       this.descuento = parseInt(this.dias) * 10 / 100;
+    });
+
+    events.subscribe('updateDay', () => {
+      this.dias = this.userService.getDias()
+      this.descuento = parseInt(this.dias) * 10 / 100;
+      this.funciones.presentToast('¡Día Sumado!')
     });
   }
 
@@ -76,9 +91,64 @@ export class AppComponent {
     this.avatar = this.userService.getAvatar();
   }
 
+  scanQR() {
+    this.funciones.hideMenu()
+    this.qrScanner.prepare()
+      .then((status: QRScannerStatus) => {
+        //Cámara preparada
+        if (status.authorized) {
+          this.qrScanner.show();  //Mostramos cámara
+          window.document.querySelector('ion-app').classList.add('cameraView');  //ocultamos vista de la app
+
+          this.scanSub = this.qrScanner.scan().subscribe((d) => {
+
+            if (d == "suma") {
+              this.userService.updateDay()
+            } else {
+              this.funciones.presentToast("Código incorrecto");
+            }
+
+            this.ngOnDestroy()
+          });
+        } else if (status.denied) {
+          this.funciones.presentToast("No hay permisos");
+          this.qrScanner.openSettings();
+        } else {
+          this.funciones.presentToast("No hay permisos");
+        }
+      })
+      .catch((e: any) => console.log('Error is', e));
+  }
+
+  ngOnDestroy() {
+    window.document.querySelector('ion-app').classList.remove('cameraView');
+    this.qrScanner.hide().then(() => {
+      this.qrScanner.destroy();
+    });
+  } 
+
   async mostrarModalLogin() {
+    this.funciones.hideMenu();
     const modal = await this.modalController.create({
       component: ModalLoginPage
+    });
+    modal.onDidDismiss().then(() => {
+
+      let comprobacion = this.workoutService.getEjercicios();
+      
+      if(comprobacion[0] == 'Descanso'){
+        this.localNotifications.schedule({
+          id: 1,
+          text: 'Eres libre, no hay entreno',
+          led: 'FF0000',
+        });
+      } else {
+        this.localNotifications.schedule({
+          id: 1,
+          text: 'Hoy toca entreno a las ' + this.groupService.getHorario() + ' horas',
+          led: 'FF0000',
+        });
+      }
     });
     return await modal.present();
   }

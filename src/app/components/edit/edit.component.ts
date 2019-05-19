@@ -28,7 +28,6 @@ export class EditComponent implements OnInit {
     private navParams: NavParams,
     public formBuilder: FormBuilder,
   ) { 
-    console.log('contructor')
     this.idEjercicio = this.navParams.get('id');
 
     if (this.idEjercicio == null) {

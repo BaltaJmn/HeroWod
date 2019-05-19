@@ -8,7 +8,7 @@
           <ion-title style="text-align: center; margin-bottom: 10px; margin-top:
             10px;">Menu</ion-title>
 
-          <ion-avatar (click)="mostrarActualizarFoto()" *ngIf="logged" 
+          <ion-avatar *ngIf="logged" (click)="mostrarActualizarFoto()" 
             style="text-align: center;margin:auto;cursor: pointer; margin-bottom: 10px;">
             <ion-img src="{{avatar}}" width="150px"
               style="border:2px
@@ -32,7 +32,7 @@
 
       <ion-content>
 
-        <ion-item *ngIf="logged">
+        <ion-item *ngIf="logged" (click)="scanQR()">
           <ion-icon slot="start" name="camera"></ion-icon>
           <ion-label>Escaneo Diario</ion-label>
         </ion-item>

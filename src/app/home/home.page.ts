@@ -50,11 +50,9 @@ export class HomePage {
 
   selectDay(){
     let selected = document.getElementById("select")
-    //let numeroEntrenamientoSelect = 
-    console.log(selected.attributes)
   }
 
   prueba(){
-    this.workoutService.crearEntrenamiento()
+    this.userService.asd()
   }
 }

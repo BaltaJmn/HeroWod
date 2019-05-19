@@ -4,7 +4,7 @@ export interface Usuario {
     usuario?: String,
     contraseña?: String,
     admin?: Boolean,
-    dias?: String,
+    dias?: any,
     avatar?: String,
     grupo?: String,
 }
