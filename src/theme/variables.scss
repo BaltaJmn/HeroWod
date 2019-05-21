@@ -86,3 +86,12 @@ ion-app.cameraView{
   background: transparent url("../assets/icon/favicon.png") !important;
   background-size: 100% 100% !important;
 }
+
+ion-popover{
+  .popover-wrapper{
+    .popover-content{
+      width:90%;
+      text-align: center;
+    }
+  }
+}

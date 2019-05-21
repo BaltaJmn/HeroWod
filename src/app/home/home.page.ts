@@ -26,6 +26,7 @@ export class HomePage {
     public userService: UsuarioService,
     public groupService: GrupoService,
     public workoutService: EntrenamientosService,
+    public funciones: FuncionesService,
     public events: Events,
     public modalController: ModalController
   ){
@@ -38,6 +39,16 @@ export class HomePage {
       this.groupActualN = this.groupService.getActual();
       this.groupMaxN = this.groupService.getMax();
       this.modalController.dismiss();
+      this.funciones.hideLoading()
+      this.funciones.presentToast("Sesión iniciada correctamente");
+      this.funciones.vibrate();
+    });
+
+    events.subscribe('logout', () => {
+      this.logged = this.userService.isLogged(); 
+      this.admin = this.userService.isAdmin();
+      this.funciones.hidePopover();
+      this.funciones.hideLoading();
     });
   }
 
@@ -46,13 +57,5 @@ export class HomePage {
       component: ModalEditPage
     });
     return await modal.present();
-  }
-
-  selectDay(){
-    let selected = document.getElementById("select")
-  }
-
-  prueba(){
-    this.userService.asd()
   }
 }

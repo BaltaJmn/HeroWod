@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      {{groupNumer}}
+      HeroWod
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -16,18 +16,6 @@
 </ion-content>
 
 <ion-content *ngIf="logged">
-  <ion-item *ngIf="admin">
-    <ion-label>Días: </ion-label>
-    <ion-select id="select" placeholder="Select One" (ionChange)="selectDay()">
-      <ion-select-option value="1">1</ion-select-option>
-      <ion-select-option value="2">2</ion-select-option>
-      <ion-select-option value="3">3</ion-select-option>
-      <ion-select-option value="4">4</ion-select-option>
-      <ion-select-option value="5">5</ion-select-option>
-      <ion-select-option value="6">6</ion-select-option>
-      <ion-select-option value="7">7</ion-select-option>
-    </ion-select>
-  </ion-item>
   <ion-item-sliding *ngFor="let workout of groupWorkout">
     <ion-item>
       <ion-label>{{workout}}</ion-label>

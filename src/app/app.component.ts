@@ -139,12 +139,14 @@ export class AppComponent {
       if(comprobacion[0] == 'Descanso'){
         this.localNotifications.schedule({
           id: 1,
+          icon: './resources/icon.png',
           text: 'Eres libre, no hay entreno',
           led: 'FF0000',
         });
       } else {
         this.localNotifications.schedule({
           id: 1,
+          icon: './resources/icon.png',
           text: 'Hoy toca entreno a las ' + this.groupService.getHorario() + ' horas',
           led: 'FF0000',
         });
@@ -169,7 +171,6 @@ export class AppComponent {
       this.logged = this.userService.isLogged();
       this.admin = this.userService.isAdmin();
       this.avatar = this.userService.getAvatar();
-      this.funciones.hideLoading()
     });
     return await popover.present();
   }

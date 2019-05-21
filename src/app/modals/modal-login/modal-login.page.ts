@@ -116,7 +116,6 @@ export class ModalLoginPage implements OnInit {
         if (d.empty == true) {
 
           this.funciones.hideLoading()
-
           this.funciones.presentToast("No se han encontrado usuarios");
 
         } else {
@@ -128,9 +127,6 @@ export class ModalLoginPage implements OnInit {
           if (this.userService.isLogged()) {
 
             this.groupService.inicializarGrupo()
-            this.funciones.hideLoading()
-            this.funciones.presentToast("Sesión iniciada correctamente");
-            //this.vibration.vibrate(50);
           
           } else {
 
@@ -151,13 +147,6 @@ export class ModalLoginPage implements OnInit {
 
   ionViewDidEnter() {
     this.SwipedTabsIndicator = document.getElementById("indicator");
-  }
-
-  /**
-   * Cierra el modal
-   */
-  cerrarModal() {
-    this.modalController.dismiss();
   }
 
   //Slide

@@ -1,5 +1,4 @@
 import { FuncionesService } from './../../services/funciones.service';
-import { PopoverController } from '@ionic/angular';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -13,7 +12,6 @@ export class LogoutComponent implements OnInit {
   constructor(
     private userService: UsuarioService,
     private funciones: FuncionesService,
-    private popoverController: PopoverController
   ) { }
 
   ngOnInit() {}
@@ -21,11 +19,11 @@ export class LogoutComponent implements OnInit {
   aceptar() {
     this.funciones.presentLoading();
     this.userService.cerrarSesion();
-    this.popoverController.dismiss();
+    this.funciones.hideMenu();
   }
 
   cancelar() {
-    this.popoverController.dismiss()
+    this.funciones.hidePopover();
   }
 
 }

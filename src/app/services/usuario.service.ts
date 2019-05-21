@@ -42,20 +42,6 @@ export class UsuarioService {
     return this.usuariosColeccion.add(datos);
   }
 
-  asd() {
-
-    let data = {
-      admin: this.usuario.admin,
-      avatar: this.usuario.avatar,
-      contraseña: this.usuario.contraseña,
-      dias: this.usuario.dias + 1,
-      grupo: this.usuario.grupo,
-      usuario: this.usuario.usuario, 
-    };
-
-    return this.usuariosColeccion.add(data);
-  }
-
   recuperarUsuarioID(usuario, contraseña) {
     return this.usuariosColeccion.ref.where("usuario", "==", usuario).where("contraseña", "==", contraseña).get();
   }
@@ -83,6 +69,7 @@ export class UsuarioService {
       this.usuario.dias = null;
       this.usuario.avatar = environment.defaultAvatar;
       this.usuario.grupo = null;
+      this.events.publish('logout')
     });
   }
 

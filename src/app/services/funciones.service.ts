@@ -1,3 +1,4 @@
+import { Vibration } from '@ionic-native/vibration/ngx';
 import { Injectable } from '@angular/core';
 import { LoadingController, ToastController, ModalController, PopoverController, MenuController } from '@ionic/angular';
 
@@ -11,7 +12,8 @@ export class FuncionesService {
     private toastController: ToastController,
     private modalController: ModalController,
     private popoverContoller: PopoverController,
-    private menuController: MenuController
+    private menuController: MenuController,
+    private vibration: Vibration
   ) { }
 
   async presentToast(msg) {
@@ -40,11 +42,15 @@ export class FuncionesService {
   }
 
   hidePopover(){
-    this.popoverContoller.dismiss()
+    this.popoverContoller.dismiss();
   }
 
   hideMenu(){
-    this.menuController.close()
+    this.menuController.close();
+  }
+
+  vibrate(){
+    this.vibration.vibrate(50);
   }
   
 }
