@@ -30,6 +30,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 @NgModule({
   declarations: [AppComponent, ModalLoginPage, LogoutComponent, ModalRankingComponent, ModalEditPage, EditComponent, ConfirmComponent],
@@ -53,6 +54,7 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
     LocalNotifications,
     Camera,
     QRScanner,
+    NativeStorage
   ],
   bootstrap: [AppComponent]
 })

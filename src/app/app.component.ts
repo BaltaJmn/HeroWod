@@ -84,6 +84,19 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      this.userService.initChecking().then(() => {
+
+        this.logged = this.userService.isLogged();
+
+        this.avatar = this.userService.getAvatar();
+
+        this.dias = this.userService.getDias();
+        this.descuento = parseInt(this.dias) * 10 / 100;
+
+        this.splashScreen.hide();
+
+      });
     });
   }
 
@@ -171,6 +184,7 @@ export class AppComponent {
       this.logged = this.userService.isLogged();
       this.admin = this.userService.isAdmin();
       this.avatar = this.userService.getAvatar();
+      this.funciones.hideLoading()
     });
     return await popover.present();
   }

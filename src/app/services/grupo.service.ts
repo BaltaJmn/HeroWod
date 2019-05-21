@@ -15,6 +15,8 @@ export class GrupoService {
   grupo: Grupo = {};
   preparado: any = {};
 
+  indice = [];
+
   constructor(
     private fireStore: AngularFirestore,
     private userService: UsuarioService,
@@ -61,36 +63,58 @@ export class GrupoService {
     return this.grupo.numeroGrupo;
   }
 
+  getCantidadGrupos(){
+    return new Promise((resolve) => {
+      this.gruposColeccion.ref.get().then(snap => {
+        let size = snap.size
+          resolve(size)
+        });
+    });    
+  }
+
+  getDisponibilidadGrupos(d){
+    return new Promise((resolve) => {
+      for (var i = 0; i < d; i++) {
+        this.indice.push(i)
+        resolve(this.indice)
+      }
+    }); 
+  }
+
+  getGruposDisponibles(){
+    let conjuntoGrupos = [];
+    let aux;
+
+    return new Promise((resolve) => {
+      this.getCantidadGrupos().then((d) => {
+        this.getDisponibilidadGrupos(d).then(() => {
+          for (let numero of this.indice){
+            this.gruposColeccion.ref.get().then((element) => {
+  
+              let x = element.docs[numero].data()
+  
+              if(x.actual >= x.max){
+                console.log('asdadsasasddasda')
+              }else{
+                aux = x.numeroGrupo;
+                conjuntoGrupos.push(aux);
+              }
+  
+            });
+          }
+        });
+        resolve(conjuntoGrupos);
+      })
+    }); 
+  }
+
   getEntrenamientos() {
     return this.grupo.entrenamientos;
   }
 
   getEntrenamientoPorDia(){
     const f: Date = new Date();
-
-    switch(f.getDay()){
-      case 0: {
-        return this.grupo.entrenamientos[0];
-      }
-      case 1: {
-        return this.grupo.entrenamientos[1];
-      }
-      case 2: {
-        return this.grupo.entrenamientos[2];
-      }
-      case 3: {
-        return this.grupo.entrenamientos[3];
-      }
-      case 4: {
-        return this.grupo.entrenamientos[4];
-      }
-      case 5: {
-        return this.grupo.entrenamientos[5];
-      }
-      case 6: {
-        return this.grupo.entrenamientos[6];
-      }
-    } 
+    return this.grupo.entrenamientos[f.getDay()]
   }
 
   getActual() {

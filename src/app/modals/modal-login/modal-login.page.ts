@@ -39,6 +39,10 @@ export class ModalLoginPage implements OnInit {
   //Inicio Sesión
   public datosUsuario = [];
 
+  //Crear Usuario
+  public grupoSelect: any;
+  public contenidoSelect: any;
+
   admin: Boolean = false;
   logged: Boolean = false;
 
@@ -61,15 +65,30 @@ export class ModalLoginPage implements OnInit {
       usuario: ['', Validators.required],
       contraseña: ['', Validators.required],
     })
+
+    console.log('primen')
+    this.contenidoSelect = []
   }
 
   ionViewWillEnter(){
+    console.log('segim')
     if (this.userService.isAdmin()){
       this.titulo = 'Crear Usuario'
     }
     this.admin = this.userService.isAdmin();
     this.logged = this.userService.isLogged();
+
+    if(this.admin == true){
+      this.contenidoSelect = [];
+      this.groupService.getGruposDisponibles().then((d) => {
+        this.contenidoSelect = d
+      });
+    }
   } 
+
+  prueba(){
+    console.log(this.grupoSelect)
+  }
 
   register(){
 
@@ -79,7 +98,7 @@ export class ModalLoginPage implements OnInit {
       admin: this.adminCheckbox,
       dias: 0,
       avatar: environment.defaultAvatar,
-      grupo: "1"
+      grupo: this.grupoSelect
     };
 
     this.funciones.presentLoading();
@@ -92,7 +111,8 @@ export class ModalLoginPage implements OnInit {
         });
 
         this.funciones.hideLoading();
-        this.funciones.presentToast('Usuario creado correctamente')
+        this.funciones.presentToast('Usuario creado correctamente');
+        this.funciones.hideModal();
       })
       .catch(() => {
         this.funciones.hideLoading();
@@ -189,6 +209,10 @@ export class ModalLoginPage implements OnInit {
     if (this.SwipedTabsIndicator)
       this.SwipedTabsIndicator.style.webkitTransform = 'translate3d(' +
         ((e.target.swiper.progress * (this.ntabs - 1)) * 100) + '%,0,0)';
+  }
+
+  cerrarModal(){
+    this.funciones.hideModal();
   }
 
 }

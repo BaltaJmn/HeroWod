@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,7 @@ export class UsuarioService {
     private events: Events,
     private camera: Camera,
     private qrScanner: QRScanner,
+    private storage: NativeStorage,
   ) { 
 
     this.usuariosColeccion = fireStore.collection<any>(environment.firebaseConfig.usuarios);
@@ -36,6 +38,21 @@ export class UsuarioService {
     this.usuario.avatar = environment.defaultAvatar;
     this.usuario.grupo = "";
 
+  }
+
+  initChecking() {
+    return new Promise((resolve, reject) => {
+      this.storage.getItem('usuario').then((val: Usuario) => {
+        if (val && val != {} && val != "" && val != [] && val != "[]" && val.id) {
+          this.usuario = val;
+        }
+        resolve("Props loaded correctly");
+      })
+        .catch(err => {
+          console.log(err);
+          reject("Error loading props on local storage");
+        });
+    });
   }
 
   crearUsuario(datos) {
@@ -56,7 +73,7 @@ export class UsuarioService {
 
     this.usuario.dias = datosUsuario.dias;
 
-    //this.storage.set('datosSesion', this.datosSesion);
+    this.storage.setItem('usuario', this.usuario);
   }
 
   cerrarSesion() {
@@ -69,6 +86,16 @@ export class UsuarioService {
       this.usuario.dias = null;
       this.usuario.avatar = environment.defaultAvatar;
       this.usuario.grupo = null;
+      this.storage.remove('usuario').then(() => {
+        this.initChecking().then(d => {
+          resolve();
+        }).catch(err => {
+          reject();
+        });
+      }).catch(err => {
+        console.log("err");
+        reject('Error removing props element on local storage');
+      });
       this.events.publish('logout')
     });
   }
@@ -204,6 +231,7 @@ export class UsuarioService {
 
   setAvatar(val){
     this.usuario.avatar = val;
+    return this.storage.setItem('usuario', this.usuario);
   }
 
   getGrupo() {
