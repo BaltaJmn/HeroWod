@@ -1,3 +1,4 @@
+import { FuncionesService } from './../../services/funciones.service';
 import { EditComponent } from './../../components/edit/edit.component';
 import { EntrenamientosService } from './../../services/entrenamientos.service';
 import { GrupoService } from './../../services/grupo.service';
@@ -19,13 +20,14 @@ export class ModalEditPage implements OnInit {
     private groupService: GrupoService,
     private workoutService: EntrenamientosService,
     private popoverController: PopoverController,
+    private funciones: FuncionesService
   ) { 
     this.ejerciciosDia = this.workoutService.getEjercicios()
   }
 
   ngOnInit() {}
 
-  async mostrarPopoverLogout(i=null) {
+  async mostrarPopoverAdd(i=null) {
     const popover = await this.popoverController.create({
       component: EditComponent,
       componentProps: {id:i},
@@ -35,6 +37,21 @@ export class ModalEditPage implements OnInit {
       this.ejerciciosDia = this.workoutService.getEjercicios();
     });
     return await popover.present();
+  }
+
+  deleteEntrenamiento(i){
+    this.ejerciciosDia.splice(i, 1);
+
+    let data = {
+      numEntreno: this.workoutService.getNumeroEntrenamiento(),
+      ejercicios: this.ejerciciosDia
+    }
+
+    this.workoutService.actualizarEntrenamiento(this.workoutService.getId(), data);
+  }
+
+  cerrarModal() {
+    this.funciones.hideModal();
   }
 
 }

@@ -30,6 +30,10 @@ export class GrupoService {
     this.grupo.actual = "";
     this.grupo.max = "";
     this.grupo.horario = "";
+
+    events.subscribe('loadGroup', () => {
+      this.inicializarGrupo();
+    });
   }
 
   inicializarGrupo(){

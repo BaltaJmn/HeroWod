@@ -65,13 +65,9 @@ export class ModalLoginPage implements OnInit {
       usuario: ['', Validators.required],
       contraseña: ['', Validators.required],
     })
-
-    console.log('primen')
-    this.contenidoSelect = []
   }
 
   ionViewWillEnter(){
-    console.log('segim')
     if (this.userService.isAdmin()){
       this.titulo = 'Crear Usuario'
     }
@@ -79,16 +75,12 @@ export class ModalLoginPage implements OnInit {
     this.logged = this.userService.isLogged();
 
     if(this.admin == true){
-      this.contenidoSelect = [];
+      this.contenidoSelect.length = 0;
       this.groupService.getGruposDisponibles().then((d) => {
         this.contenidoSelect = d
       });
     }
   } 
-
-  prueba(){
-    console.log(this.grupoSelect)
-  }
 
   register(){
 

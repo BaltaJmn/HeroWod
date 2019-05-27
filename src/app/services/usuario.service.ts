@@ -45,6 +45,9 @@ export class UsuarioService {
       this.storage.getItem('usuario').then((val: Usuario) => {
         if (val && val != {} && val != "" && val != [] && val != "[]" && val.id) {
           this.usuario = val;
+
+          this.iniciarSesion(this.getId, this.usuario);
+          this.events.publish('loadGroup')
         }
         resolve("Props loaded correctly");
       })

@@ -94,8 +94,6 @@ export class AppComponent {
         this.dias = this.userService.getDias();
         this.descuento = parseInt(this.dias) * 10 / 100;
 
-        this.splashScreen.hide();
-
       });
     });
   }
