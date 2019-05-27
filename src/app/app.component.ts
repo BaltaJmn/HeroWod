@@ -102,6 +102,9 @@ export class AppComponent {
     this.avatar = this.userService.getAvatar();
   }
 
+  /**
+   * Método para escanear Código QR
+   */
   scanQR() {
     this.funciones.hideMenu()
     this.qrScanner.prepare()

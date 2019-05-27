@@ -44,6 +44,9 @@ export class EditComponent implements OnInit {
 
   ngOnInit() {}
 
+  /**
+   * Dependiendo de los parámetros que reciba, carga el formulario con la información
+   */
   loadData() {
 
     if ( this.idEjercicio == null){

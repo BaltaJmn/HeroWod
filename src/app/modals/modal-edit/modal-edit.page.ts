@@ -27,6 +27,9 @@ export class ModalEditPage implements OnInit {
 
   ngOnInit() {}
 
+  /**
+   * Muestra el componente para añadir un entrenamiento
+   */
   async mostrarPopoverAdd(i=null) {
     const popover = await this.popoverController.create({
       component: EditComponent,
@@ -39,6 +42,10 @@ export class ModalEditPage implements OnInit {
     return await popover.present();
   }
 
+  /**
+   * Método para borrar un entrenamiento del array
+   * @param i Posición del entrenamiento a borrar
+   */
   deleteEntrenamiento(i){
     this.ejerciciosDia.splice(i, 1);
 
@@ -50,6 +57,9 @@ export class ModalEditPage implements OnInit {
     this.workoutService.actualizarEntrenamiento(this.workoutService.getId(), data);
   }
 
+  /**
+   * Función que cierra el modal
+   */
   cerrarModal() {
     this.funciones.hideModal();
   }

@@ -24,6 +24,9 @@ export class EntrenamientosService {
     this.entrenamiento.numeroEntrenamiento = "";
     this.entrenamiento.ejercicios;
 
+    /**
+     * Evento que carga los entrenamientos una vez cargado el grupo del usuario
+     */
     events.subscribe('loadWorkout', () => {
       this.recuperarEntrenamientosGrupo().then((d) => {
         d.forEach(t => {
@@ -36,22 +39,39 @@ export class EntrenamientosService {
     })
    }
 
+  /**
+   * Método que recupera el entrenamiento relacionado con el grupo
+   */
   recuperarEntrenamientosGrupo(){
     return this.entrenamientosColeccion.ref.where("numEntreno", "==", this.groupService.getEntrenamientoPorDia()).get();
   }
 
+  /**
+   * Método para actualizar los entrenamientos
+   * @param id 
+   * @param data 
+   */
   actualizarEntrenamiento(id, data){
     return this.entrenamientosColeccion.doc(id).set(data);
   }
 
+  /**
+   * Devuelve el id del entrenamiento
+   */
   getId() {
     return this.entrenamiento.id;
   }
 
+  /**
+   * Devuelve el número del entrenamiento
+   */
   getNumeroEntrenamiento() {
     return this.entrenamiento.numeroEntrenamiento;
   }
 
+  /**
+   * Devuelve los ejercicios del entrenamiento
+   */
   getEjercicios(){
     return this.entrenamiento.ejercicios
   }

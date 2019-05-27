@@ -67,6 +67,9 @@ export class ModalLoginPage implements OnInit {
     })
   }
 
+  /**
+   * Comprueba antes de entrar a la ventana si el usuario es administrador
+   */
   ionViewWillEnter(){
     if (this.userService.isAdmin()){
       this.titulo = 'Crear Usuario'
@@ -82,6 +85,9 @@ export class ModalLoginPage implements OnInit {
     }
   } 
 
+  /**
+   * Método para registrar un usuario
+   */
   register(){
 
     let data = {
@@ -110,9 +116,11 @@ export class ModalLoginPage implements OnInit {
         this.funciones.hideLoading();
         this.funciones.presentToast('No se ha podido crear el usuario deseado');
       });
-    
   }
 
+  /**
+   * Método para iniciar sesión
+   */
   login(){
 
     let data = {

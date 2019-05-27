@@ -30,6 +30,9 @@ export class HomePage {
     public events: Events,
     public modalController: ModalController
   ){
+    /**
+     * Evento que carga toda la información una vez se ha iniciado sesión
+     */
     events.subscribe('loadScreen', () => {
       this.logged = this.userService.isLogged(); 
       this.admin = this.userService.isAdmin();  
@@ -44,6 +47,9 @@ export class HomePage {
       this.funciones.vibrate();
     });
 
+    /**
+     * Evento que refresca información una vez cerrada sesión
+     */
     events.subscribe('logout', () => {
       this.logged = this.userService.isLogged(); 
       this.admin = this.userService.isAdmin();
@@ -52,6 +58,9 @@ export class HomePage {
     });
   }
 
+  /**
+   * Muestra el modal Editar
+   */
   async mostrarModalEdit() {
     const modal = await this.modalController.create({
       component: ModalEditPage

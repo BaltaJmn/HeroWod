@@ -40,6 +40,9 @@ export class UsuarioService {
 
   }
 
+  /**
+   * Método que comprueba al cargar la aplicación si hay algún dato guardado en la memoria
+   */
   initChecking() {
     return new Promise((resolve, reject) => {
       this.storage.getItem('usuario').then((val: Usuario) => {
@@ -52,20 +55,34 @@ export class UsuarioService {
         resolve("Props loaded correctly");
       })
         .catch(err => {
-          console.log(err);
+          console.log('No se ha encontrado ningún dato guardado en local storage');
           reject("Error loading props on local storage");
         });
     });
   }
 
+  /**
+   * Método para crear un usuario
+   * @param datos 
+   */
   crearUsuario(datos) {
     return this.usuariosColeccion.add(datos);
   }
 
+  /**
+   * Devuelve el usuario que contenga dicho usuario y dicha contraseña
+   * @param usuario 
+   * @param contraseña 
+   */
   recuperarUsuarioID(usuario, contraseña) {
     return this.usuariosColeccion.ref.where("usuario", "==", usuario).where("contraseña", "==", contraseña).get();
   }
 
+  /**
+   * Inicia sesión con los parámetros 
+   * @param id 
+   * @param datosUsuario 
+   */
   iniciarSesion(id, datosUsuario) {
 
     this.usuario = datosUsuario;
@@ -79,6 +96,9 @@ export class UsuarioService {
     this.storage.setItem('usuario', this.usuario);
   }
 
+  /**
+   * Método para cerrar sesión
+   */
   cerrarSesion() {
     return new Promise((resolve, reject) => {
       this.usuario.logged = false;
@@ -103,6 +123,9 @@ export class UsuarioService {
     });
   }
 
+  /**
+   * Método para obtener el ránking con todos los usuarios
+   */
   getRanking(): Promise<Usuario[]> {
     return new Promise((resolve) => {
 
@@ -121,6 +144,9 @@ export class UsuarioService {
     });
   }
 
+  /**
+   * Método para actualizar la foto de perfil
+   */
   updateProfilePhoto() {
     return new Promise((resolve, reject) => {
 
@@ -161,14 +187,25 @@ export class UsuarioService {
     });
   }  
 
+  /**
+   * Método para obtener a un usuario
+   * @param user 
+   */
   searchUser(user){
     return this.usuariosColeccion.ref.where("usuario", "==", user).get()
   }
 
+  /**
+   * Método para obtener al usuario actual
+   */
   searchCurrentUser(){
     return this.usuariosColeccion.ref.where("usuario", "==", this.usuario).get()
   }
 
+  /**
+   * Método para actualizar los datos de un usuario
+   * @param data
+   */
   updateDataUser(data){
     return this.usuariosColeccion.ref.where("usuario", "==", this.usuario).get()
       .then((d) => {
@@ -176,6 +213,9 @@ export class UsuarioService {
       });
   }
 
+  /**
+   * Método para actualizar los días de un usuario
+   */
   updateDay(){
     return new Promise((resolve, reject) => {
 

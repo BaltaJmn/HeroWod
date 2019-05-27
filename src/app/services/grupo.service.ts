@@ -36,6 +36,9 @@ export class GrupoService {
     });
   }
 
+  /**
+   * Recupera el grupo en relación al usuario logeado
+   */
   inicializarGrupo(){
     this.recuperarGrupoUsuario().then((d) => {
       d.forEach(t => {
@@ -50,6 +53,9 @@ export class GrupoService {
     });
   }
 
+  /**
+   * Recupera la colección del grupo
+   */
   recuperarGrupoUsuario() {
     this.grupo.numeroGrupo = this.userService.getGrupo()
     return this.gruposColeccion.ref.where("numeroGrupo", "==", this.grupo.numeroGrupo).get();
@@ -67,6 +73,9 @@ export class GrupoService {
     return this.grupo.numeroGrupo;
   }
 
+  /**
+   * Devuelve la cantidad de grupos diferentes
+   */
   getCantidadGrupos(){
     return new Promise((resolve) => {
       this.gruposColeccion.ref.get().then(snap => {
@@ -76,6 +85,10 @@ export class GrupoService {
     });    
   }
 
+  /**
+   * Devuelve la cantidad de grupos disponibles
+   * @param d Número de grupos
+   */
   getDisponibilidadGrupos(d){
     return new Promise((resolve) => {
       for (var i = 0; i < d; i++) {
@@ -85,6 +98,9 @@ export class GrupoService {
     }); 
   }
 
+  /**
+   * Devuelve un array con los grupos disponibles
+   */
   getGruposDisponibles(){
     let conjuntoGrupos = [];
     let aux;
@@ -116,6 +132,9 @@ export class GrupoService {
     return this.grupo.entrenamientos;
   }
 
+  /**
+   * Devuelve el correspodiente entrenamiento según el día
+   */
   getEntrenamientoPorDia(){
     const f: Date = new Date();
     return this.grupo.entrenamientos[f.getDay()]

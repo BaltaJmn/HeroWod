@@ -23,6 +23,10 @@ export class ModalRankingComponent implements OnInit {
     this.updateRanking(null);
   }
 
+  /**
+   * Método para actualizar el ránking
+   * @param event 
+   */
   updateRanking(event?) {
 
     this.listadoRanking = [];
