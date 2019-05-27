@@ -1,0 +1,1749 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>HeroWod documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">HeroWod documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>UsuarioService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/services/usuario.service.ts</code>
+        </p>
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#usuario">usuario</a>
+                            </li>
+                            <li>
+                                <a href="#usuariosColeccion">usuariosColeccion</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cerrarSesion">cerrarSesion</a>
+                            </li>
+                            <li>
+                                <a href="#crearUsuario">crearUsuario</a>
+                            </li>
+                            <li>
+                                <a href="#getAvatar">getAvatar</a>
+                            </li>
+                            <li>
+                                <a href="#getContraseña">getContraseña</a>
+                            </li>
+                            <li>
+                                <a href="#getDias">getDias</a>
+                            </li>
+                            <li>
+                                <a href="#getGrupo">getGrupo</a>
+                            </li>
+                            <li>
+                                <a href="#getId">getId</a>
+                            </li>
+                            <li>
+                                <a href="#getRanking">getRanking</a>
+                            </li>
+                            <li>
+                                <a href="#getUsuario">getUsuario</a>
+                            </li>
+                            <li>
+                                <a href="#iniciarSesion">iniciarSesion</a>
+                            </li>
+                            <li>
+                                <a href="#initChecking">initChecking</a>
+                            </li>
+                            <li>
+                                <a href="#isAdmin">isAdmin</a>
+                            </li>
+                            <li>
+                                <a href="#isLogged">isLogged</a>
+                            </li>
+                            <li>
+                                <a href="#recuperarUsuarioID">recuperarUsuarioID</a>
+                            </li>
+                            <li>
+                                <a href="#searchCurrentUser">searchCurrentUser</a>
+                            </li>
+                            <li>
+                                <a href="#searchUser">searchUser</a>
+                            </li>
+                            <li>
+                                <a href="#setAvatar">setAvatar</a>
+                            </li>
+                            <li>
+                                <a href="#setDias">setDias</a>
+                            </li>
+                            <li>
+                                <a href="#updateDataUser">updateDataUser</a>
+                            </li>
+                            <li>
+                                <a href="#updateDay">updateDay</a>
+                            </li>
+                            <li>
+                                <a href="#updateProfilePhoto">updateProfilePhoto</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(funciones: <a href="../injectables/FuncionesService.html">FuncionesService</a>, fireStore: AngularFirestore, events: Events, camera: Camera, qrScanner: QRScanner, storage: NativeStorage)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/services/usuario.service.ts:17</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>funciones</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/FuncionesService.html" target="_self" >FuncionesService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>fireStore</td>
+                                                  
+                                                        <td>
+                                                                    <code>AngularFirestore</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>events</td>
+                                                  
+                                                        <td>
+                                                                    <code>Events</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>camera</td>
+                                                  
+                                                        <td>
+                                                                    <code>Camera</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>qrScanner</td>
+                                                  
+                                                        <td>
+                                                                    <code>QRScanner</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>storage</td>
+                                                  
+                                                        <td>
+                                                                    <code>NativeStorage</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cerrarSesion"></a>
+                    <span class="name">
+                        <b>
+                            cerrarSesion
+                        </b>
+                        <a href="#cerrarSesion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cerrarSesion()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="102"
+                            class="link-to-prism">src/app/services/usuario.service.ts:102</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Método para cerrar sesión</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="crearUsuario"></a>
+                    <span class="name">
+                        <b>
+                            crearUsuario
+                        </b>
+                        <a href="#crearUsuario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>crearUsuario(datos)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">src/app/services/usuario.service.ts:68</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Método para crear un usuario</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>datos</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAvatar"></a>
+                    <span class="name">
+                        <b>
+                            getAvatar
+                        </b>
+                        <a href="#getAvatar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAvatar()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="271"
+                            class="link-to-prism">src/app/services/usuario.service.ts:271</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getContraseña"></a>
+                    <span class="name">
+                        <b>
+                            getContraseña
+                        </b>
+                        <a href="#getContraseña"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getContraseña()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="259"
+                            class="link-to-prism">src/app/services/usuario.service.ts:259</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDias"></a>
+                    <span class="name">
+                        <b>
+                            getDias
+                        </b>
+                        <a href="#getDias"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDias()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="263"
+                            class="link-to-prism">src/app/services/usuario.service.ts:263</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getGrupo"></a>
+                    <span class="name">
+                        <b>
+                            getGrupo
+                        </b>
+                        <a href="#getGrupo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getGrupo()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="280"
+                            class="link-to-prism">src/app/services/usuario.service.ts:280</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getId"></a>
+                    <span class="name">
+                        <b>
+                            getId
+                        </b>
+                        <a href="#getId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getId()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="251"
+                            class="link-to-prism">src/app/services/usuario.service.ts:251</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getRanking"></a>
+                    <span class="name">
+                        <b>
+                            getRanking
+                        </b>
+                        <a href="#getRanking"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getRanking()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="129"
+                            class="link-to-prism">src/app/services/usuario.service.ts:129</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Método para obtener el ránking con todos los usuarios</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/Usuario.html" target="_self" >Promise&lt;Usuario[]&gt;</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUsuario"></a>
+                    <span class="name">
+                        <b>
+                            getUsuario
+                        </b>
+                        <a href="#getUsuario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getUsuario()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="255"
+                            class="link-to-prism">src/app/services/usuario.service.ts:255</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="iniciarSesion"></a>
+                    <span class="name">
+                        <b>
+                            iniciarSesion
+                        </b>
+                        <a href="#iniciarSesion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>iniciarSesion(id, datosUsuario)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="86"
+                            class="link-to-prism">src/app/services/usuario.service.ts:86</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Inicia sesión con los parámetros </p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>datosUsuario</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initChecking"></a>
+                    <span class="name">
+                        <b>
+                            initChecking
+                        </b>
+                        <a href="#initChecking"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>initChecking()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">src/app/services/usuario.service.ts:46</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Método que comprueba al cargar la aplicación si hay algún dato guardado en la memoria</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isAdmin"></a>
+                    <span class="name">
+                        <b>
+                            isAdmin
+                        </b>
+                        <a href="#isAdmin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isAdmin()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="246"
+                            class="link-to-prism">src/app/services/usuario.service.ts:246</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank" >Boolean</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLogged"></a>
+                    <span class="name">
+                        <b>
+                            isLogged
+                        </b>
+                        <a href="#isLogged"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isLogged()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="242"
+                            class="link-to-prism">src/app/services/usuario.service.ts:242</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank" >Boolean</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="recuperarUsuarioID"></a>
+                    <span class="name">
+                        <b>
+                            recuperarUsuarioID
+                        </b>
+                        <a href="#recuperarUsuarioID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>recuperarUsuarioID(usuario, contraseña)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="77"
+                            class="link-to-prism">src/app/services/usuario.service.ts:77</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Devuelve el usuario que contenga dicho usuario y dicha contraseña</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>usuario</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>contraseña</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchCurrentUser"></a>
+                    <span class="name">
+                        <b>
+                            searchCurrentUser
+                        </b>
+                        <a href="#searchCurrentUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>searchCurrentUser()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="201"
+                            class="link-to-prism">src/app/services/usuario.service.ts:201</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Método para obtener al usuario actual</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchUser"></a>
+                    <span class="name">
+                        <b>
+                            searchUser
+                        </b>
+                        <a href="#searchUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>searchUser(user)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="194"
+                            class="link-to-prism">src/app/services/usuario.service.ts:194</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Método para obtener a un usuario</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>user</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setAvatar"></a>
+                    <span class="name">
+                        <b>
+                            setAvatar
+                        </b>
+                        <a href="#setAvatar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setAvatar(val)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="275"
+                            class="link-to-prism">src/app/services/usuario.service.ts:275</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>val</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setDias"></a>
+                    <span class="name">
+                        <b>
+                            setDias
+                        </b>
+                        <a href="#setDias"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setDias(val)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="267"
+                            class="link-to-prism">src/app/services/usuario.service.ts:267</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>val</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateDataUser"></a>
+                    <span class="name">
+                        <b>
+                            updateDataUser
+                        </b>
+                        <a href="#updateDataUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateDataUser(data)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="209"
+                            class="link-to-prism">src/app/services/usuario.service.ts:209</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Método para actualizar los datos de un usuario</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>data</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateDay"></a>
+                    <span class="name">
+                        <b>
+                            updateDay
+                        </b>
+                        <a href="#updateDay"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateDay()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="219"
+                            class="link-to-prism">src/app/services/usuario.service.ts:219</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Método para actualizar los días de un usuario</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateProfilePhoto"></a>
+                    <span class="name">
+                        <b>
+                            updateProfilePhoto
+                        </b>
+                        <a href="#updateProfilePhoto"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateProfilePhoto()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="150"
+                            class="link-to-prism">src/app/services/usuario.service.ts:150</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Método para actualizar la foto de perfil</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="usuario"></a>
+                        <span class="name">
+                            <b>
+                            usuario</b>
+                            <a href="#usuario"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Usuario.html" target="_self" >Usuario</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{}</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/services/usuario.service.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="usuariosColeccion"></a>
+                        <span class="name">
+                            <b>
+                            usuariosColeccion</b>
+                            <a href="#usuariosColeccion"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/services/usuario.service.ts:16</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { FuncionesService } from &#x27;./funciones.service&#x27;;
+import { Events } from &#x27;@ionic/angular&#x27;;
+import { AngularFirestore } from &#x27;angularfire2/firestore&#x27;;
+import { Usuario } from &#x27;./../interfaces/Usuario&#x27;;
+import { Injectable } from &#x27;@angular/core&#x27;;
+import { environment } from &#x27;src/environments/environment&#x27;;
+import { Camera, CameraOptions } from &#x27;@ionic-native/camera/ngx&#x27;;
+import { QRScanner, QRScannerStatus } from &#x27;@ionic-native/qr-scanner/ngx&#x27;;
+import { NativeStorage } from &#x27;@ionic-native/native-storage/ngx&#x27;;
+
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class UsuarioService {
+
+  usuariosColeccion: any;
+  usuario: Usuario &#x3D; {};
+
+  
+
+  constructor(
+    private funciones: FuncionesService,
+    private fireStore: AngularFirestore,
+    private events: Events,
+    private camera: Camera,
+    private qrScanner: QRScanner,
+    private storage: NativeStorage,
+  ) { 
+
+    this.usuariosColeccion &#x3D; fireStore.collection&lt;any&gt;(environment.firebaseConfig.usuarios);
+    
+    this.usuario.logged &#x3D; false;
+    this.usuario.id &#x3D; &quot;&quot;;
+    this.usuario.usuario &#x3D; &quot;&quot;;
+    this.usuario.contraseña &#x3D; &quot;&quot;;
+    this.usuario.admin &#x3D; false;
+    this.usuario.dias &#x3D; 0;
+    this.usuario.avatar &#x3D; environment.defaultAvatar;
+    this.usuario.grupo &#x3D; &quot;&quot;;
+
+  }
+
+  /**
+   * Método que comprueba al cargar la aplicación si hay algún dato guardado en la memoria
+   */
+  initChecking() {
+    return new Promise((resolve, reject) &#x3D;&gt; {
+      this.storage.getItem(&#x27;usuario&#x27;).then((val: Usuario) &#x3D;&gt; {
+        if (val &amp;&amp; val !&#x3D; {} &amp;&amp; val !&#x3D; &quot;&quot; &amp;&amp; val !&#x3D; [] &amp;&amp; val !&#x3D; &quot;[]&quot; &amp;&amp; val.id) {
+          this.usuario &#x3D; val;
+
+          this.iniciarSesion(this.getId, this.usuario);
+          this.events.publish(&#x27;loadGroup&#x27;)
+        }
+        resolve(&quot;Props loaded correctly&quot;);
+      })
+        .catch(err &#x3D;&gt; {
+          console.log(&#x27;No se ha encontrado ningún dato guardado en local storage&#x27;);
+          reject(&quot;Error loading props on local storage&quot;);
+        });
+    });
+  }
+
+  /**
+   * Método para crear un usuario
+   * @param datos 
+   */
+  crearUsuario(datos) {
+    return this.usuariosColeccion.add(datos);
+  }
+
+  /**
+   * Devuelve el usuario que contenga dicho usuario y dicha contraseña
+   * @param usuario 
+   * @param contraseña 
+   */
+  recuperarUsuarioID(usuario, contraseña) {
+    return this.usuariosColeccion.ref.where(&quot;usuario&quot;, &quot;&#x3D;&#x3D;&quot;, usuario).where(&quot;contraseña&quot;, &quot;&#x3D;&#x3D;&quot;, contraseña).get();
+  }
+
+  /**
+   * Inicia sesión con los parámetros 
+   * @param id 
+   * @param datosUsuario 
+   */
+  iniciarSesion(id, datosUsuario) {
+
+    this.usuario &#x3D; datosUsuario;
+
+    this.usuario.logged &#x3D; true;
+
+    this.usuario.id &#x3D; id;
+
+    this.usuario.dias &#x3D; datosUsuario.dias;
+
+    this.storage.setItem(&#x27;usuario&#x27;, this.usuario);
+  }
+
+  /**
+   * Método para cerrar sesión
+   */
+  cerrarSesion() {
+    return new Promise((resolve, reject) &#x3D;&gt; {
+      this.usuario.logged &#x3D; false;
+      this.usuario.id &#x3D; null;
+      this.usuario.usuario &#x3D; null;
+      this.usuario.contraseña &#x3D; null;
+      this.usuario.admin &#x3D; false;
+      this.usuario.dias &#x3D; null;
+      this.usuario.avatar &#x3D; environment.defaultAvatar;
+      this.usuario.grupo &#x3D; null;
+      this.storage.remove(&#x27;usuario&#x27;).then(() &#x3D;&gt; {
+        this.initChecking().then(d &#x3D;&gt; {
+          resolve();
+        }).catch(err &#x3D;&gt; {
+          reject();
+        });
+      }).catch(err &#x3D;&gt; {
+        console.log(&quot;err&quot;);
+        reject(&#x27;Error removing props element on local storage&#x27;);
+      });
+      this.events.publish(&#x27;logout&#x27;)
+    });
+  }
+
+  /**
+   * Método para obtener el ránking con todos los usuarios
+   */
+  getRanking(): Promise&lt;Usuario[]&gt; {
+    return new Promise((resolve) &#x3D;&gt; {
+
+      let lreq: Usuario[] &#x3D; [];
+      let query;
+
+      query &#x3D; this.usuariosColeccion.ref.orderBy(&quot;dias&quot;, &quot;desc&quot;).get()
+      
+      query.then((d) &#x3D;&gt; {
+        d.forEach((u) &#x3D;&gt; {
+          let x &#x3D; { &quot;id&quot;: u.id, ...u.data() };
+          lreq.push(x);
+        });
+        resolve(lreq);
+      });
+    });
+  }
+
+  /**
+   * Método para actualizar la foto de perfil
+   */
+  updateProfilePhoto() {
+    return new Promise((resolve, reject) &#x3D;&gt; {
+
+      const options: CameraOptions &#x3D; {
+        quality: 100,
+        destinationType: this.camera.DestinationType.DATA_URL,  /*FILE_URI */
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType: this.camera.MediaType.PICTURE,
+        cameraDirection: 0,
+        correctOrientation: true,
+        saveToPhotoAlbum: true,
+        targetWidth: 200
+      };
+
+      let data &#x3D; {
+        admin: this.usuario.admin,
+        avatar: this.usuario.avatar,
+        contraseña: this.usuario.contraseña,
+        dias: this.usuario.dias,
+        grupo: this.usuario.grupo,
+        usuario: this.usuario.usuario, 
+      };
+
+      this.camera.getPicture(options)
+        .then((imageData) &#x3D;&gt; {
+          let base64Image &#x3D; &#x27;data:image/jpeg;base64, &#x27; + imageData;
+          data.avatar &#x3D; base64Image;
+
+          this.setAvatar(data.avatar);
+
+          this.usuariosColeccion.ref.where(&quot;usuario&quot;, &quot;&#x3D;&#x3D;&quot;, data.usuario).get()
+            .then((d) &#x3D;&gt; {
+              this.usuariosColeccion.doc(d.docs[0].id).update(data).then(() &#x3D;&gt; {
+                resolve();
+              });
+            });
+        });
+    });
+  }  
+
+  /**
+   * Método para obtener a un usuario
+   * @param user 
+   */
+  searchUser(user){
+    return this.usuariosColeccion.ref.where(&quot;usuario&quot;, &quot;&#x3D;&#x3D;&quot;, user).get()
+  }
+
+  /**
+   * Método para obtener al usuario actual
+   */
+  searchCurrentUser(){
+    return this.usuariosColeccion.ref.where(&quot;usuario&quot;, &quot;&#x3D;&#x3D;&quot;, this.usuario).get()
+  }
+
+  /**
+   * Método para actualizar los datos de un usuario
+   * @param data
+   */
+  updateDataUser(data){
+    return this.usuariosColeccion.ref.where(&quot;usuario&quot;, &quot;&#x3D;&#x3D;&quot;, this.usuario).get()
+      .then((d) &#x3D;&gt; {
+        this.usuariosColeccion.doc(d.docs[0].id).update(data);
+      });
+  }
+
+  /**
+   * Método para actualizar los días de un usuario
+   */
+  updateDay(){
+    return new Promise((resolve, reject) &#x3D;&gt; {
+
+      let data &#x3D; {
+        admin: this.usuario.admin,
+        avatar: this.usuario.avatar,
+        contraseña: this.usuario.contraseña,
+        dias: this.usuario.dias + 1,
+        grupo: this.usuario.grupo,
+        usuario: this.usuario.usuario, 
+      }
+      
+      this.setDias(data.dias)
+
+      this.usuariosColeccion.ref.where(&quot;usuario&quot;, &quot;&#x3D;&#x3D;&quot;, data.usuario).get()
+        .then((d) &#x3D;&gt; {
+          this.usuariosColeccion.doc(d.docs[0].id).update(data).then(() &#x3D;&gt; {
+            this.events.publish(&#x27;updateDay&#x27;);
+          });
+        });
+    });
+  }
+
+  isLogged(): Boolean {
+    return this.usuario.logged;
+  }
+
+  isAdmin(): Boolean {
+    return this.usuario.admin;
+  }
+
+
+  getId() {
+    return this.usuario.id;
+  }
+
+  getUsuario() {
+    return this.usuario.usuario;
+  }
+
+  getContraseña() {
+    return this.usuario.contraseña;
+  }
+
+  getDias() {
+    return this.usuario.dias;
+  }
+
+  setDias(val) {
+    this.usuario.dias &#x3D; val;
+  }
+
+  getAvatar() {
+    return this.usuario.avatar;
+  }
+
+  setAvatar(val){
+    this.usuario.avatar &#x3D; val;
+    return this.storage.setItem(&#x27;usuario&#x27;, this.usuario);
+  }
+
+  getGrupo() {
+    return this.usuario.grupo;
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'UsuarioService.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
