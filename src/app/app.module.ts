@@ -31,6 +31,7 @@ import { Vibration } from '@ionic-native/vibration/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [AppComponent, ModalLoginPage, LogoutComponent, ModalRankingComponent, ModalEditPage, EditComponent, ConfirmComponent],
@@ -42,7 +43,8 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StatusBar,
