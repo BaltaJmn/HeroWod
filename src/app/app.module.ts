@@ -1,3 +1,4 @@
+import { ModalEditInfoPage } from './modals/modal-edit-info/modal-edit-info.page';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { EditComponent } from './components/edit/edit.component';
 import { ModalEditPage } from './modals/modal-edit/modal-edit.page';
@@ -34,8 +35,8 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
-  declarations: [AppComponent, ModalLoginPage, LogoutComponent, ModalRankingComponent, ModalEditPage, EditComponent, ConfirmComponent],
-  entryComponents: [AppComponent, ModalLoginPage, LogoutComponent, ModalRankingComponent, ModalEditPage, EditComponent, ConfirmComponent],
+  declarations: [AppComponent, ModalLoginPage, LogoutComponent, ModalRankingComponent, ModalEditPage, ModalEditInfoPage, EditComponent, ConfirmComponent],
+  entryComponents: [AppComponent, ModalLoginPage, LogoutComponent, ModalRankingComponent, ModalEditPage, ModalEditInfoPage, EditComponent, ConfirmComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

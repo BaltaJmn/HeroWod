@@ -13,12 +13,12 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class EditComponent implements OnInit {
 
-  private editFormGroup: FormGroup;
-  private idEjercicio: any = null;
-  private ejerciciosDia: any;
-  private ejercicioParaEditar: any;
+  public editFormGroup: FormGroup;
+  public idEjercicio: any = null;
+  public ejerciciosDia: any;
+  public ejercicioParaEditar: any;
 
-  private titulo: String = 'Editando entrenamiento: '
+  public titulo: String = 'Editando entrenamiento: '
 
   constructor(
     private userService: UsuarioService,
@@ -26,7 +26,7 @@ export class EditComponent implements OnInit {
     private workoutService: EntrenamientosService,
     private funciones: FuncionesService,
     private navParams: NavParams,
-    public formBuilder: FormBuilder,
+    private formBuilder: FormBuilder,
   ) { 
     this.idEjercicio = this.navParams.get('id');
 
@@ -76,6 +76,10 @@ export class EditComponent implements OnInit {
       this.funciones.hidePopover()
     }
     
+  }
+
+  cerrarModal(){
+    this.funciones.hideModal();
   }
 
 }

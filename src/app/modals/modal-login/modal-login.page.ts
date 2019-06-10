@@ -41,7 +41,7 @@ export class ModalLoginPage implements OnInit {
 
   //Crear Usuario
   public grupoSelect: any;
-  public contenidoSelect: any;
+  public contenidoSelect: any = null;
 
   admin: Boolean = false;
   logged: Boolean = false;
@@ -71,14 +71,12 @@ export class ModalLoginPage implements OnInit {
    * Comprueba antes de entrar a la ventana si el usuario es administrador
    */
   ionViewWillEnter(){
-    if (this.userService.isAdmin()){
-      this.titulo = 'Crear Usuario'
-    }
     this.admin = this.userService.isAdmin();
     this.logged = this.userService.isLogged();
 
-    if(this.admin == true){
-      this.contenidoSelect.length = 0;
+    if (this.userService.isAdmin()){
+      this.titulo = 'Crear Usuario'
+
       this.groupService.getGruposDisponibles().then((d) => {
         this.contenidoSelect = d
       });
@@ -107,6 +105,8 @@ export class ModalLoginPage implements OnInit {
           usuario: '',
           contraseña: ''
         });
+
+        this.contenidoSelect = null;
 
         this.funciones.hideLoading();
         this.funciones.presentToast('Usuario creado correctamente');

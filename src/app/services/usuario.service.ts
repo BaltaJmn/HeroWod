@@ -204,13 +204,11 @@ export class UsuarioService {
 
   /**
    * Método para actualizar los datos de un usuario
+   * @param id
    * @param data
    */
-  updateDataUser(data){
-    return this.usuariosColeccion.ref.where("usuario", "==", this.usuario).get()
-      .then((d) => {
-        this.usuariosColeccion.doc(d.docs[0].id).update(data);
-      });
+  updateDataUser(id, data){
+    return this.usuariosColeccion.ref.doc(id).set(data);
   }
 
   /**

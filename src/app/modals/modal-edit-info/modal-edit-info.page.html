@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Editor de Información</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="editUserFormGroup" (ngSubmit)="editInfo()">
+
+    <ion-item>
+      <ion-label>Usuario</ion-label>
+      <ion-input color="primary" placeholder="Usuario" formControlName="usuario"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Contraseña</ion-label>
+      <ion-input color="primary" placeholder="Contraseña" formControlName="contraseña"></ion-input>
+    </ion-item>
+
+    <ion-button color="primary" type="submit" [disabled]="!editUserFormGroup.valid">Guardar Información</ion-button>
+
+  </form>
+</ion-content>

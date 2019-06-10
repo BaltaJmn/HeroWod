@@ -1,3 +1,4 @@
+import { ModalEditInfoPage } from './modals/modal-edit-info/modal-edit-info.page';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { ModalRankingComponent } from './modals/modal-ranking/modal-ranking.component';
@@ -173,6 +174,19 @@ export class AppComponent {
     const modal = await this.modalController.create({
       component: ModalRankingComponent
     });
+    return await modal.present();
+  }
+
+  async mostrarModalEditInfo() {
+    const modal = await this.modalController.create({
+      component: ModalEditInfoPage
+    });
+    modal.onDidDismiss().then(() => {
+      console.log(this.userService.getUsuario())
+      this.username = this.userService.getUsuario();
+      this.funciones.hideMenu();
+      this.funciones.hideLoading();
+    })
     return await modal.present();
   }
 

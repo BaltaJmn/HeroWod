@@ -45,6 +45,18 @@
       </ion-content>
 
       <ion-footer>
+
+        <ion-item *ngIf="logged">
+
+            <ion-label>
+              <ion-button color="primary" (click)="mostrarModalEditInfo()">
+                <ion-icon slot="start" name="edit"></ion-icon>
+                <span>Editar Usuario</span>
+              </ion-button>
+            </ion-label>
+
+        </ion-item>
+
         <ion-item *ngIf="admin">
 
           <ion-label>

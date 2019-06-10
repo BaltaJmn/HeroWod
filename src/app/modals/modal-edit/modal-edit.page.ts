@@ -13,7 +13,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class ModalEditPage implements OnInit {
 
-  private ejerciciosDia: any;
+  public ejerciciosDia: any;
 
   constructor(
     private userService: UsuarioService,
