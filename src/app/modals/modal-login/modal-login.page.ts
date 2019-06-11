@@ -74,7 +74,11 @@ export class ModalLoginPage implements OnInit {
     this.admin = this.userService.isAdmin();
     this.logged = this.userService.isLogged();
 
-    if (this.userService.isAdmin()){
+    if (this.contenidoSelect != null) {
+      this.contenidoSelect = null
+    }
+
+    if (this.userService.isAdmin() == true){
       this.titulo = 'Crear Usuario'
 
       this.groupService.getGruposDisponibles().then((d) => {

@@ -16,6 +16,9 @@ export class GrupoService {
   preparado: any = {};
 
   indice = [];
+  x: any;
+  aux: any;
+  conjuntoGrupos: any;
 
   constructor(
     private fireStore: AngularFirestore,
@@ -102,28 +105,29 @@ export class GrupoService {
    * Devuelve un array con los grupos disponibles
    */
   getGruposDisponibles(){
-    let conjuntoGrupos = [];
-    let aux;
+    this.conjuntoGrupos = [];
+    this.aux;
+    this.indice = [];
 
     return new Promise((resolve) => {
       this.getCantidadGrupos().then((d) => {
         this.getDisponibilidadGrupos(d).then(() => {
+          this.conjuntoGrupos.length = 0;
           for (let numero of this.indice){
             this.gruposColeccion.ref.get().then((element) => {
   
-              let x = element.docs[numero].data()
+              this.x = element.docs[numero].data()
   
-              if(x.actual >= x.max){
+              if(this.x.actual >= this.x.max){
                 console.log('asdadsasasddasda')
               }else{
-                aux = x.numeroGrupo;
-                conjuntoGrupos.push(aux);
+                this.aux = this.x.numeroGrupo;
+                this.conjuntoGrupos.push(this.aux);
               }
-  
             });
           }
         });
-        resolve(conjuntoGrupos);
+        resolve(this.conjuntoGrupos);
       })
     }); 
   }
